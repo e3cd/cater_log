@@ -21,6 +21,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.select :is_caterer, [['I am looking for a Caterer', false], ['I am a Caterer', true]] %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
