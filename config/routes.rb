@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  root 'home#index'
   resources :messages
   resources :conversations
   resources :histories
@@ -9,9 +10,4 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :caterer_informations
-
-  devise_for :users
-  root 'home#index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
