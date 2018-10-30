@@ -25,6 +25,7 @@ class CatererInformationsController < ApplicationController
   # POST /caterer_informations.json
   def create
     @caterer_information = CatererInformation.new(caterer_information_params)
+ 
 
     respond_to do |format|
       if @caterer_information.save
