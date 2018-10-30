@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :caterer_menus
   devise_for :users
   root 'home#index'
 
