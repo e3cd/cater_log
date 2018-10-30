@@ -11,7 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 2018_10_30_012405) do
+
+
+ActiveRecord::Schema.define(version: 2018_10_30_012328) do
 
 ActiveRecord::Schema.define(version: 2018_10_30_012322) do
 
@@ -24,6 +28,16 @@ ActiveRecord::Schema.define(version: 2018_10_30_012322) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "caterer_informations", force: :cascade do |t|
     t.string "name"
@@ -51,5 +65,6 @@ ActiveRecord::Schema.define(version: 2018_10_30_012322) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "users"
   add_foreign_key "caterer_informations", "users"
 end
