@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :reviews
+  resources :caterer_informations
   devise_for :users
   root 'home#index'
 
