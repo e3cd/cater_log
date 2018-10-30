@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :messages
+  resources :conversations
+  resources :histories
   resources :caterer_menus
 
 
