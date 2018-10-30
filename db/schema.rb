@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_012405) do
-
-
-ActiveRecord::Schema.define(version: 2018_10_30_014926) do
-
-ActiveRecord::Schema.define(version: 2018_10_30_014446) do
-
+ActiveRecord::Schema.define(version: 2018_10_30_053034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +34,6 @@ ActiveRecord::Schema.define(version: 2018_10_30_014446) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "conversations", force: :cascade do |t|
     t.integer "caterer_id"
     t.integer "customer_id"
@@ -48,24 +41,39 @@ ActiveRecord::Schema.define(version: 2018_10_30_014446) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "histories", force: :cascade do |t|
-    t.date "booking_date"
-    t.integer "user_id"
-    t.integer "caterermenu_id"
-    t.decimal "price"
-    t.text "stripe_charge_id"
+  create_table "event_types", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_event_users_on_user_id"
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.date "booking_date"
+    t.bigint "user_id"
+    t.bigint "caterer_menu_id"
+    t.decimal "price"
+    t.text "stripe_charge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caterer_menu_id"], name: "index_histories_on_caterer_menu_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
-    t.integer "conversation_id"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -74,7 +82,6 @@ ActiveRecord::Schema.define(version: 2018_10_30_014446) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -86,7 +93,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_014446) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_caterer?"
+    t.boolean "is_caterer"
     t.bigint "user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -94,8 +101,9 @@ ActiveRecord::Schema.define(version: 2018_10_30_014446) do
   end
 
   add_foreign_key "caterer_informations", "users"
+  add_foreign_key "event_users", "users"
+  add_foreign_key "histories", "caterer_menus"
+  add_foreign_key "histories", "users"
   add_foreign_key "reviews", "users"
-
   add_foreign_key "users", "users"
-
 end

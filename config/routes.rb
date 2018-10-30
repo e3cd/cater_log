@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-
-  resources :messages
-  resources :conversations
   resources :histories
   resources :caterer_menus
 
 
   resources :reviews
   resources :caterer_informations
+
+  resources :conversations do
+    resources :messages
+  end
 
   devise_for :users
   root 'home#index'
