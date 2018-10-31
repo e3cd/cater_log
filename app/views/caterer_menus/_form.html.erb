@@ -1,4 +1,4 @@
-<%= form_with(model: caterer_menu, local: true) do |form| %>
+<%= bootstrap_form_with(model: caterer_menu, local: true) do |form| %>
   <% if caterer_menu.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(caterer_menu.errors.count, "error") %> prohibited this caterer_menu from being saved:</h2>
@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
     <%= form.text_field :price %>
   </div>
 

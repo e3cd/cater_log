@@ -10,7 +10,6 @@
       <th>Address</th>
       <th>Image</th>
       <th>About</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +22,6 @@
         <td><%= caterer_information.address %></td>
         <td><%= caterer_information.image %></td>
         <td><%= caterer_information.about %></td>
-        <td><%= caterer_information.user %></td>
         <td><%= link_to 'Show', caterer_information %></td>
         <td><%= link_to 'Edit', edit_caterer_information_path(caterer_information) %></td>
         <td><%= link_to 'Destroy', caterer_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
