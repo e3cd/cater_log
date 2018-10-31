@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_10_30_053034) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +95,8 @@ ActiveRecord::Schema.define(version: 2018_10_30_053034) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.boolean "is_caterer"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_users_on_user_id"
