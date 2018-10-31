@@ -17,7 +17,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @caterer_information.image %>
+  <%= image_tag @caterer_information.image_url %>
 </p>
 
 <p>
@@ -25,10 +25,6 @@
   <%= @caterer_information.about %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @caterer_information.user %>
-</p>
 
 <%= link_to 'Edit', edit_caterer_information_path(@caterer_information) %> |
 <%= link_to 'Back', caterer_informations_path %>
