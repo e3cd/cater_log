@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_area :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="field">
@@ -36,10 +36,6 @@
     <%= form.text_area :about %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
