@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_033246) do
+ActiveRecord::Schema.define(version: 2018_10_31_004824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 2018_10_30_033246) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_event_users_on_user_id"
   end
 
   create_table "histories", force: :cascade do |t|
@@ -78,12 +91,15 @@ ActiveRecord::Schema.define(version: 2018_10_30_033246) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.boolean "is_caterer"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_users_on_user_id"
   end
 
   add_foreign_key "caterer_informations", "users"
+  add_foreign_key "event_users", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "users"
 end
