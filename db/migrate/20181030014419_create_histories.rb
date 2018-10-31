@@ -2,8 +2,8 @@ class CreateHistories < ActiveRecord::Migration[5.2]
   def change
     create_table :histories do |t|
       t.date :booking_date
-      t.integer :user_id
-      t.integer :caterermenu_id
+      t.references :user, foreign_key: true
+      t.references :caterer_menu, foreign_key: true
       t.decimal :price
       t.text :stripe_charge_id
 

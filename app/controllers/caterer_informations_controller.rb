@@ -1,5 +1,6 @@
 class CatererInformationsController < ApplicationController
   before_action :set_caterer_information, only: [:show, :edit, :update, :destroy]
+  before_action :is_caterer
 
   # GET /caterer_informations
   # GET /caterer_informations.json
@@ -30,7 +31,8 @@ class CatererInformationsController < ApplicationController
     respond_to do |format|
       if @caterer_information.save
         format.html { redirect_to @caterer_information, notice: 'Caterer information was successfully created.' }
-        format.json { render :show, status: :created, location: @caterer_information }
+        new_caterer_menu_path
+        # format.json { render :show, status: :created, location: @caterer_information }
       else
         format.html { render :new }
         format.json { render json: @caterer_information.errors, status: :unprocessable_entity }
@@ -71,5 +73,9 @@ class CatererInformationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def caterer_information_params
       params.require(:caterer_information).permit(:name, :number, :address, :image, :about, :user_id)
+    end
+
+    def is_caterer
+      current_user.is_caterer
     end
 end
