@@ -1,5 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::Minimagick
+  include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
   storage :aws
   # storage :fog
