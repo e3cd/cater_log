@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-
+    
     # if @messages.length > 10
     #   @over_ten = true
     #   @messages = @messages[-10..-1]
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:body, :user_id)
+      params.require(:message).permit(:body, :user_id, :caterer_information)
     end
 
     def find_conversation
