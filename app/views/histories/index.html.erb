@@ -1,1 +1,24 @@
-<h1>History<h1>
+<p id="notice"><%= notice %></p>
+
+<h1>History</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Booking Date</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @histories.each do |history| %>
+    <% if history.user_id == current_user.id %>
+      <tr>
+        <td><%= history.caterer_menu.description %></td>
+        <td><%= history.caterer_menu.price %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>

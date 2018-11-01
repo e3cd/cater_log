@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+
+  get 'about', to: 'about#index'
+
   #event types
   get '/event_types', to: 'event_types#index'
   get '/event_types/parties', to: 'event_types#party'
@@ -27,7 +30,6 @@ Rails.application.routes.draw do
 
 
   
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

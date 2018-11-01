@@ -1,1 +1,24 @@
 <h1>Home Page</h1>
+
+<table>
+  <tr>
+    <td>
+      <%= link_to "About", about_path %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Sign Up", new_user_registration_path %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Enquire", conversations_path %>
+    </td>
+  </tr>
+</table>

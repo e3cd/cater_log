@@ -44,6 +44,20 @@ ActiveRecord::Schema.define(version: 2018_11_01_054658) do
     t.datetime "updated_at", null: false
   end
 
+
+  create_table "histories", force: :cascade do |t|
+    t.date "booking_date"
+    t.bigint "user_id"
+    t.bigint "caterer_menu_id"
+    t.decimal "price"
+    t.text "stripe_charge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caterer_menu_id"], name: "index_histories_on_caterer_menu_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "conversation_id"
@@ -72,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_054658) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_caterer"
+    t.bigint "user_id"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -79,6 +94,9 @@ ActiveRecord::Schema.define(version: 2018_11_01_054658) do
   end
 
   add_foreign_key "caterer_informations", "users"
+  add_foreign_key "event_users", "users"
+  add_foreign_key "histories", "caterer_menus"
+  add_foreign_key "histories", "users"
   add_foreign_key "caterer_menus", "users"
   add_foreign_key "reviews", "users"
 end
