@@ -9,8 +9,9 @@ class User < ApplicationRecord
   has_many :caterer_menus
   has_many :messages
   has_many :conversations
-  has_many :event_users
   has_one :caterer_information
+  has_one :event_user
+  has_one :event_type, through: :event_user
 
   ####### OmniAuth  ###########
   # Below was breaking the app, but I think its essential

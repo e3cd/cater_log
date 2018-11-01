@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
     t.text "address"
     t.text "image"
     t.text "about"
+    t.string "type_of_event"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,19 +40,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "event_types", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "event_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_event_users_on_user_id"
   end
 
   create_table "histories", force: :cascade do |t|
@@ -89,8 +77,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.boolean "is_caterer"
+    t.bigint "user_id"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -99,7 +87,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
   end
 
   add_foreign_key "caterer_informations", "users"
-  add_foreign_key "event_users", "users"
+  add_foreign_key "histories", "caterer_menus"
+  add_foreign_key "histories", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "users"
 end
