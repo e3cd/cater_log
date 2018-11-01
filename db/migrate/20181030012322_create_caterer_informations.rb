@@ -6,6 +6,7 @@ class CreateCatererInformations < ActiveRecord::Migration[5.2]
       t.text :address
       t.text :image
       t.text :about
+      t.integer :type_of_event
       t.references :user, foreign_key: true
 
       t.timestamps

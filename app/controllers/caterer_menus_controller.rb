@@ -25,6 +25,7 @@ class CatererMenusController < ApplicationController
   # POST /caterer_menus.json
   def create
     @caterer_menu = CatererMenu.new(caterer_menu_params)
+    @caterer_menu.user_id = current_user.id
 
     respond_to do |format|
       if @caterer_menu.save
