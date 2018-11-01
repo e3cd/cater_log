@@ -14,3 +14,4 @@ class CatererInformation < ApplicationRecord
   # }
 
 end
+

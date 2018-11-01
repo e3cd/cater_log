@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @caterer_information.name %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @caterer_information.number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @caterer_information.address %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @caterer_information.image_url %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @caterer_information.about %>
+</p>
+
+
+<%= link_to 'Edit', edit_caterer_information_path(@caterer_information) %> |
+<%= link_to 'Back', caterer_informations_path %>

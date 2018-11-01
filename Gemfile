@@ -56,7 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.5"
 
-
 gem "omniauth-facebook", "~> 5.0"
 
 gem "carrierwave", "~> 1.2"
@@ -64,4 +63,8 @@ gem "carrierwave", "~> 1.2"
 gem "carrierwave-aws", "~> 1.3"
 
 gem "mini_magick", "~> 4.9"
+
+gem 'bootstrap', '~> 4.1.3'
+
+gem "bootstrap_form", ">= 4.0.0"
 

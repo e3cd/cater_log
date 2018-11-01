@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caterer Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Address</th>
+      <th>Image</th>
+      <th>About</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caterer_informations.each do |caterer_information| %>
+      <tr>
+        <td><%= caterer_information.name %></td>
+        <td><%= caterer_information.number %></td>
+        <td><%= caterer_information.address %></td>
+        <td><%= caterer_information.image %></td>
+        <td><%= caterer_information.about %></td>
+        <td><%= link_to 'Show', caterer_information %></td>
+        <td><%= link_to 'Edit', edit_caterer_information_path(caterer_information) %></td>
+        <td><%= link_to 'Destroy', caterer_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caterer Information', new_caterer_information_path %>
