@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2018_11_01_054658) do
   end
 
   add_foreign_key "caterer_informations", "users"
-  add_foreign_key "event_users", "users"
   add_foreign_key "histories", "caterer_menus"
   add_foreign_key "histories", "users"
   add_foreign_key "caterer_menus", "users"
