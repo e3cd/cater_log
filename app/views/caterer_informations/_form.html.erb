@@ -25,7 +25,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :image %>
     <%= form.file_field :image %>
   </div>
 
@@ -34,7 +33,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :type_of_event %>
     <%= form.select(:type_of_event, CatererInformation.type_of_events.keys)
 %> 
   </div>

@@ -29,8 +29,12 @@ class CatererInformationsController < ApplicationController
   def create
     @caterer_information = CatererInformation.new(caterer_information_params)
     @caterer_information.user_id = current_user.id
-    @caterer_information.save
-    render :events
+    if @caterer_information.save
+      redirect_to  new_caterer_menu_path
+    else
+      render :new
+      render json: @caterer_information.errors, status: :unprocessable_entity
+    end
 
 
     # if @caterer_information.save
