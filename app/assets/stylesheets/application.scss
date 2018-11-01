@@ -17,3 +17,19 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.box-1 {
+  background-color: aquamarine;
+}
+
+footer {
+  height: 50vh;
+}
