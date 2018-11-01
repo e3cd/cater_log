@@ -56,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:user][:is_caterer] == "true"
       new_caterer_information_path
     else
-      root_path
+      event_types_path
     end
   end
 

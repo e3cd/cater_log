@@ -1,0 +1,29 @@
+<% if @event_types.present? %>
+			<div class="container">
+			<% @event_types.each do |event_types| %>
+			<div class="d-flex align-items-center">
+					<a href="<%= conversation_path(conversation) %>">
+					<div class="p-2 d-flex flex-column no-wrap">
+							<div class="message-title p-2">
+							<h3><%= conversation.title %></h3>
+							</div>
+							<div class="message-last-update p-2">
+							<% if conversation.messages.present? %>
+									<p><%= 'Last Updated '+format_date_to_localtime(conversation.messages.last.updated_at) %></p>
+							<% else %>
+									<p><%= 'New' %></p>
+							<% end %>
+							</div>
+					</div>
+					<div class="message-delete p-2 ml-auto">
+							<h3><%= link_to simple_format('<i class="fa fa-times" aria-hidden="true"></i>'), conversation, method: :delete, data: { confirm: 'End the conversation?' } %></h3>
+					</div>
+					
+					</a>
+			</div>
+			<% end %>
+			</div>
+		<% end %>
+
+
+

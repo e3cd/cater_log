@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
     t.text "address"
     t.text "image"
     t.text "about"
-    t.string "type_of_event"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +37,12 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
   create_table "conversations", force: :cascade do |t|
     t.integer "caterer_id"
     t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
