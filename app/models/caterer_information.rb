@@ -2,7 +2,7 @@ class CatererInformation < ApplicationRecord
   belongs_to :user
   mount_uploader :image, ImageUploader
 
-  enum type_of_event: [:Wedding, :Party, :Conference, :Formal, :Cocktail, :Outdoor]
+  enum type_of_event: [:Wedding, :Party, :Conference, :Formal, :Cocktail, :Concert]
 
   # enum event: {
   #   "Wedding": 1, 
