@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :caterer_menus
 
   resources :reviews
-  # resources :caterer_informations
-  get '/caterer/new', to: 'caterer_informations#new', as: 'new_caterer'
-  post '/caterer/new', to: 'caterer_informations#create'
+  resources :caterer_informations
+  # get '/caterer/new', to: 'caterer_informations#new', as: 'new_caterer'
+  # post '/caterer/new', to: 'caterer_informations#create'
   resources :conversations do
     resources :messages
   end

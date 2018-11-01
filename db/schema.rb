@@ -42,22 +42,33 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_event_users_on_user_id"
+  end
+
   create_table "histories", force: :cascade do |t|
     t.date "booking_date"
-    t.integer "user_id"
-    t.integer "caterermenu_id"
+    t.bigint "user_id"
+    t.bigint "caterer_menu_id"
     t.decimal "price"
     t.text "stripe_charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["caterer_menu_id"], name: "index_histories_on_caterer_menu_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
-    t.integer "conversation_id"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -87,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_004824) do
   end
 
   add_foreign_key "caterer_informations", "users"
+  add_foreign_key "event_users", "users"
   add_foreign_key "histories", "caterer_menus"
   add_foreign_key "histories", "users"
   add_foreign_key "reviews", "users"

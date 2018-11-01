@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super(resource)
     ### FOR SOME REASON, IT IS COMING THROUGH AS STRING AND NOT AS BOOLEAN! ####
     if params[:user][:is_caterer] == "true"
-      new_caterer_path
+      new_caterer_information_path
     else
       root_path
     end
