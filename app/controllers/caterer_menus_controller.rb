@@ -25,16 +25,22 @@ class CatererMenusController < ApplicationController
   # POST /caterer_menus.json
   def create
     @caterer_menu = CatererMenu.new(caterer_menu_params)
-
-    respond_to do |format|
-      if @caterer_menu.save
-        format.html { redirect_to @caterer_menu, notice: 'Caterer menu was successfully created.' }
-        format.json { render :show, status: :created, location: @caterer_menu }
-      else
-        format.html { render :new }
-        format.json { render json: @caterer_menu.errors, status: :unprocessable_entity }
-      end
+    @caterer_menu.user_id = current_user.id
+    if @caterer_menu.save
+      redirect_to caterer_information_path(@caterer_menu.user_id)
+    else
+      render :new
     end
+
+    # respond_to do |format|
+    #   if @caterer_menu.save
+    #     format.html { redirect_to @caterer_menu, notice: 'Caterer menu was successfully created.' }
+    #     format.json { render :show, status: :created, location: @caterer_menu }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @caterer_menu.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /caterer_menus/1
