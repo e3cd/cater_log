@@ -1,4 +1,4 @@
-<%= form_with(model: caterer_information, local: true) do |form| %>
+<%= form_for @caterer_information, url: {action: "create"} do |form| %>
   <% if caterer_information.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(caterer_information.errors.count, "error") %> prohibited this caterer_information from being saved:</h2>
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_area :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="field">
@@ -37,8 +37,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :type_of_event %>
+    <%= form.select(:type_of_event, CatererInformation.type_of_events.keys)
+%> 
   </div>
 
   <div class="actions">

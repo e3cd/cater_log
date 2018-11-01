@@ -1,4 +1,4 @@
 class EventUser < ApplicationRecord
-  has_many :event_types
-  has_many :users
+  belongs_to :user
+  has_one :event_type
 end
