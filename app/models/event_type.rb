@@ -1,2 +1,0 @@
-class EventType < ApplicationRecord
-end
