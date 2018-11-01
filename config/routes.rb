@@ -17,12 +17,12 @@ Rails.application.routes.draw do
 
   #event types
   get '/event_types', to: 'event_types#index'
-  get '/event_types/party', to: 'event_types#show'
-  get '/event_types/wedding', to: 'event_types#show'
-  get '/event_types/conference', to: 'event_types#show'
-  get '/event_types/formal', to: 'event_types#show'
-  get '/event_types/cocktail', to: 'event_types#show'
-  get '/event_types/festival', to: 'event_types#show'
+  get '/event_types/parties', to: 'event_types#party'
+  get '/event_types/weddings', to: 'event_types#wedding'
+  get '/event_types/conferences', to: 'event_types#conference'
+  get '/event_types/formal', to: 'event_types#formal'
+  get '/event_types/cocktails', to: 'event_types#cocktail'
+  get '/event_types/concerts', to: 'event_types#concert'
 
 
   
