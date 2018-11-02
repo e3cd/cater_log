@@ -2,4 +2,21 @@
 <h1>Cocktails</h1>
 </div>
 
-<%= render 'show' %>
+<% @cocktail.each do |cocktail| %>
+    <p>
+        <%= image_tag cocktail.image_url %>
+    </p>
+    <p>
+        <strong>Name:</strong>
+        <%= cocktail.name %>
+    </p>
+    <p>
+        <strong>Address:</strong>
+        <%= cocktail.address %>
+    </p>
+    <p>
+        <strong>About:</strong>
+        <%= cocktail.about %>
+    </p>
+
+<% end %>

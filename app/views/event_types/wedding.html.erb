@@ -1,3 +1,21 @@
 <div class="text-center">
 <h1>Weddings</h1>
 </div>
+
+<% @wedding.each do |wedding| %>
+    <p>
+        <%= image_tag wedding.image_url %>
+    </p>
+    <p>
+        <strong>Name:</strong>
+        <%= wedding.name %>
+    </p>
+    <p>
+        <strong>Address:</strong>
+        <%= wedding.address %>
+    </p>
+    <p>
+        <strong>About:</strong>
+        <%= wedding.about %>
+    </p>
+<% end %>

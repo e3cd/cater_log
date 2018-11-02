@@ -1,3 +1,22 @@
 <div class="text-center">
 <h1>Concerts</h1>
 </div>
+
+<% @concert.each do |concert| %>
+    <p>
+        <%= image_tag concert.image_url %>
+    </p>
+    <p>
+        <strong>Name:</strong>
+        <%= concert.name %>
+    </p>
+    <p>
+        <strong>Address:</strong>
+        <%= concert.address %>
+    </p>
+    <p>
+        <strong>About:</strong>
+        <%= concert.about %>
+    </p>
+
+<% end %>

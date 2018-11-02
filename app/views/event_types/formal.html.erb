@@ -1,3 +1,22 @@
 <div class="text-center">
 <h1>Formal</h1>
 </div>
+
+<% @formal.each do |formal| %>
+    <p>
+        <%= image_tag formal.image_url %>
+    </p>
+    <p>
+        <strong>Name:</strong>
+        <%= formal.name %>
+    </p>
+    <p>
+        <strong>Address:</strong>
+        <%= formal.address %>
+    </p>
+    <p>
+        <strong>About:</strong>
+        <%= formal.about %>
+    </p>
+
+<% end %>
