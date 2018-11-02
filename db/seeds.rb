@@ -11,6 +11,7 @@
 # end
 
 users = []
+caterer_menu = []
 n = 10
 
 #Fill User table with email and password from faker, and is_caterer as a random value from true and false
@@ -25,7 +26,7 @@ n.times do
     users.push(user.id)
 end
 
-#Populate CatererInformation with Faker
+#Populate CatererInformation and CatererMenu and History with Faker
 users.each do |user_id|
     CatererInformation.create(
         business_name: Faker::Food.dish,
@@ -42,6 +43,14 @@ users.each do |user_id|
         price: Faker::Number.decimal(2),
         user_id: user_id
     )
+    # caterer_menu.push(caterer_menu.id)
 end
 
-
+# n.times do
+#     History.create(
+#         booking_date: Faker::Date.forward(53),
+#         user_id: users.sample,
+#         caterer_menu_id: caterer_menu.sample,
+#         price: Faker::Number.decimal(2)
+#     )
+# end

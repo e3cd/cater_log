@@ -14,9 +14,9 @@ class CatererInformationsController < ApplicationController
   # GET /caterer_informations/1.json
   def show
     #Find by, so it is just the one result, not an array of one
-    @caterer_information = CatererInformation.find_by(user_id: current_user.id)
+    @caterer_information = CatererInformation.find_by(user_id: params[:id])
     #Where, so its an array, and each can be used
-    @caterer_menu = CatererMenu.where(user_id: current_user.id)
+    @caterer_menu = CatererMenu.where(user_id: params[:id])
     #i as an index, so it will change the package number
     @i = 1
   end
