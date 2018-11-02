@@ -18,5 +18,10 @@
         <strong>About:</strong>
         <%= concert.about %>
     </p>
+    <p>
+        <%= link_to 'profile', caterer_information_path(concert.user_id) %>
+    </p>
 
 <% end %>
+
+<%= link_to 'Back', event_types_path %>
