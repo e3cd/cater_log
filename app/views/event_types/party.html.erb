@@ -2,4 +2,24 @@
 <h1>Parties</h1>
 </div>
 
-<%= @party[0] %>
+<% @party.each do |party| %>
+    <p>
+        <%= image_tag party.image_url %>
+    </p>
+    <p>
+        <strong>Name:</strong>
+        <%= party.name %>
+    </p>
+    <p>
+        <strong>Address:</strong>
+        <%= party.address %>
+    </p>
+    <p>
+        <strong>About:</strong>
+        <%= party.about %>
+    </p>
+
+<% end %>
+
+
+
