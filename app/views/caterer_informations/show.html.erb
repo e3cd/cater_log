@@ -25,6 +25,23 @@
   <%= @caterer_information.about %>
 </p>
 
+<p>
+  <strong>About:</strong>
+  <% @caterer_menu.each do |menu| %>
+    <div>
+      <h5>Package <%= @i %></h5>
+      <p><%= menu.description %></p>
+      <p><%= menu.price %></p>
+      <%= link_to 'Book', new_booking_path %>
+    </div>
+    <% @i += 1 %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Enquire'%>
+</p>
+
 
 <%= link_to 'Edit', edit_caterer_information_path(@caterer_information) %> |
 <%= link_to 'Back', caterer_informations_path %>
