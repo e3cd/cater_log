@@ -5,7 +5,13 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'  
   }
   root 'home#index'
-  resources :histories
+
+  ###### HISTORY/BOOKING ######
+  # resources :histories
+  get '/history', to: 'histories#index', as: 'histories'
+  get '/booking', to: 'histories#new', as: 'new_booking'
+  ###### END #######
+
   resources :caterer_menus
 
   resources :reviews
@@ -27,6 +33,7 @@ Rails.application.routes.draw do
   get '/event_types/formal', to: 'event_types#formal'
   get '/event_types/cocktails', to: 'event_types#cocktail'
   get '/event_types/concerts', to: 'event_types#concert'
+  
 
 
   

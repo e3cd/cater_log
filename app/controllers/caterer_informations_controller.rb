@@ -1,6 +1,6 @@
 class CatererInformationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_caterer_information, only: [:show, :edit, :update, :destroy]
+  before_action :set_caterer_information, only: [:edit, :update, :destroy]
   ############ Before action - ensure is_caterer #####################
   # before_action :is_caterer
 
@@ -13,6 +13,12 @@ class CatererInformationsController < ApplicationController
   # GET /caterer_informations/1
   # GET /caterer_informations/1.json
   def show
+    #Find by, so it is just the one result, not an array of one
+    @caterer_information = CatererInformation.find_by(user_id: current_user.id)
+    #Where, so its an array, and each can be used
+    @caterer_menu = CatererMenu.where(user_id: current_user.id)
+    #i as an index, so it will change the package number
+    @i = 1
   end
 
   # GET /caterer_informations/new
