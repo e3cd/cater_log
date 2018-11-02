@@ -20,15 +20,34 @@
 
 .section {
   height: 100vh;
+}
+
+.box-1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  background-image: url("catering.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.section-2 {
+  margin-left: 150px;
 }
 
-.box-1 {
-  background-color: aquamarine;
+h2 {
+  text-align: center;
+  margin-top: 100px;
 }
+
+.box-3 {
+  background-color: black;
+  color: white;
+}
+
+
 
 footer {
   height: 50vh;
