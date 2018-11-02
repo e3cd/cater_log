@@ -15,8 +15,8 @@
    
     <section>
 
-      <div class="section box-1">
-        <div class="section-2">
+      <div class="section-1 box-1">
+        <div class="section1-box1">
           <h1>Book caterers for any event, online</h1>
           <p>Save yourself some time and book a caterer.</p>
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -30,26 +30,37 @@
         </div>
       </div>
 
-      <div class="section box-2">
+      <div class="section-2 box-2">
         <h2>Featured</h2>
-
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="container-fluid card-feature">
+            <% @caterer_information.each do |caterer|%>
+              <div class="card">
+                <img class="card-img-top" src=<%= caterer.image %> alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><%= caterer.name %></h5>
+                  <p class="card-text"><%= caterer.about %></p>
+                  <a href="#" class="btn btn-outline-dark">More Information</a>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div>
-
-
-
-
 
       </div>
       
-      <div class="section box-3">
-        <h2>Why Us?</h2>
+      <div class="section-3 box-3">
+
+        <div class="card" id="card-us">
+            <div class="card-body">
+              <div class="card-us-grid">
+                <h5 class="card-title">Why Us?</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Easy to Book</h6>
+                <p class="card-text">Our booking system allows you to book on the spot!</p>
+                <h6 class="card-subtitle mb-2 text-muted">Easy to Book</h6>
+                <p class="card-text">Our booking system allows you to book on the spot!</p>
+              </div>
+          </div>
+
+        </div>
 
       </div>
     </section>

@@ -18,7 +18,14 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-.section {
+.navbar {
+  background-color: white;
+  color: white;
+  text-decoration: none;
+}
+
+// display
+.section-1 {
   height: 100vh;
 }
 
@@ -33,22 +40,68 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.section-2 {
+
+.section1-box1 {
   margin-left: 150px;
 }
 
+// heading 2
 h2 {
   text-align: center;
-  margin-top: 100px;
+}
+
+// Features
+.section-2 {
+  height: 80vh;
+}
+
+.box-2 {
+  margin: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-feature {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  width: 30rem;
+}
+// Why Us?
+.section-3 {
+  height: 100vh;
 }
 
 .box-3 {
   background-color: black;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("cater-food.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+#card-us {
+  height: 40rem;
+  width: 80rem;
+  opacity: 0.8;
+}
 
+// .card-us {
+//   display: flex;
+//   justify-content: center;
+//   align-content: center;
+// }
 
 footer {
-  height: 50vh;
+  height: 30vh;
+  background-color: black;
+  color: white;
 }
