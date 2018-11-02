@@ -12,11 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :name %>
+    <%= form.text_field :first_name, value: current_user.first_name %>
   </div>
 
   <div class="field">
-    <%= form.text_field :email %>
+    <%= form.text_field :last_name, value: current_user.last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :email, value: current_user.email %>
   </div>
 
   <div class="field">

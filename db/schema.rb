@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_231937) do
+ActiveRecord::Schema.define(version: 2018_11_02_030022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "caterer_informations", force: :cascade do |t|
-    t.string "name"
+    t.string "business_name"
     t.text "number"
     t.text "address"
     t.text "image"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_11_01_231937) do
     t.boolean "is_caterer"
     t.string "provider"
     t.string "uid"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

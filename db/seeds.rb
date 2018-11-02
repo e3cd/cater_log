@@ -16,8 +16,10 @@ n = 10
 #Fill User table with email and password from faker, and is_caterer as a random value from true and false
 n.times do 
     user = User.create(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
         email: Faker::Internet.email,
-        password: Faker::Internet.password(8),
+        password: "password",#Faker::Internet.password(8),
         is_caterer: [true, false].sample
     )
     users.push(user.id)
@@ -26,7 +28,7 @@ end
 #Populate CatererInformation with Faker
 users.each do |user_id|
     CatererInformation.create(
-        name: Faker::Name.name,
+        business_name: Faker::Food.dish,
         user_id: user_id,
         number: Faker::Number.number(10),
         address: Faker::Address.street_address,
