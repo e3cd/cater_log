@@ -13,23 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :business_name %>
+    <%= form.text_field :business_name, placeholder: "eg. Bob's Burgers" %>
   </div>
 
   <div class="field">
-    <%= form.text_area :number %>
+    <%= form.text_area :number, label: "Contact Number", placeholder: 'eg. +61412345678' %>
   </div>
 
   <div class="field">
-    <%= form.text_area :address %>
+    <%= form.text_area :address, label: "Business Address", placeholder: 'eg. 123 Fake Street Sydney 2000' %>
   </div>
 
   <div class="field">
-    <%= form.file_field :image %>
+    <%= form.text_area :about, label: "About Your Business", placeholder: "e.g. At Bob's, we are passionate about burgers" %>
   </div>
 
   <div class="field">
-    <%= form.text_area :about %>
+    <%= form.file_field :image, label: "Profile Picture" %>
   </div>
 
   <div class="field">

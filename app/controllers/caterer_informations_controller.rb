@@ -35,12 +35,26 @@ class CatererInformationsController < ApplicationController
   def create
     @caterer_information = CatererInformation.new(caterer_information_params)
     @caterer_information.user_id = current_user.id
-    if @caterer_information.save
-      redirect_to  new_caterer_menu_path
-    else
-      render :new
-      render json: @caterer_information.errors, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @caterer_information.save
+          format.html { redirect_to(new_caterer_menu_path)}
+      else
+          format.html{render :new}
+          format.json { render json: @caterer_information.errors, status: :unprocessable_entity }
+      end
     end
+
+
+
+    # @caterer_information.save
+    # if @caterer_information.save
+    #   redirect_to  new_caterer_menu_path
+    # else
+    #   render :new, status: :unprocessable_entity
+    #   byebug()
+    #   # render json: @caterer_information.errors, status: :unprocessable_entity
+    # end
 
 
     # if @caterer_information.save
@@ -99,7 +113,7 @@ class CatererInformationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def caterer_information_params
-      params.require(:caterer_information).permit(:name, :number, :address, :image, :about, :user_id, :type_of_event)
+      params.require(:caterer_information).permit(:business_name, :number, :address, :image, :about, :user_id, :type_of_event)
     end
 
     # def is_caterer
