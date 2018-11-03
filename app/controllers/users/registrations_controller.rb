@@ -43,8 +43,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
   ################# ADD IS_CATERER TO SIGN ON SHEET ###############
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:is_caterer])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:is_caterer])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:is_caterer, :first_name, :last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:is_caterer, :first_name, :last_name])
   end
   ################## END ######################
 
