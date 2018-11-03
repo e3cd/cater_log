@@ -1,0 +1,29 @@
+<!-- Real simple table to display booking data -->
+<h1>Confirm Booking</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Number of People</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= params[:date] %></td>
+            <td><%= params[:time] %></td>
+            <td><%= params[:number] %></td>
+            <td><%= @history.price %></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <!-- Link to Stripe Payment -->
+    CONFIRM BUTTTON
+</div>
+<div>
+    <!-- Link to Edit fields -->
+    EDIT BUTTON - will take them back to form page
+</div>

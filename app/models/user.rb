@@ -1,16 +1,23 @@
 class User < ApplicationRecord
+  #### Validations - Email and password are covered by Devise #####
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  #### End Validations #####
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  ##### Associations ######
   has_many :reviews
   has_many :caterer_menus
   has_many :messages
   has_many :conversations
   has_many :histories
   has_one :caterer_information
+  ##### End Associations #####
 
   ####### OmniAuth  ###########
   # Below was breaking the app, but I think its essential

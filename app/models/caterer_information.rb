@@ -8,7 +8,7 @@ class CatererInformation < ApplicationRecord
 
   #Validations ... self-explanatory, but number is no less than 8 (smallest number possible), but given the freedom to go further if they add spaces etc
   validates :business_name, presence: true
-  validates :number, length: { minimum: 8 }
+  validates :number, length: { minimum: 8 }, format: { with: /[0-9]/, message: "Only allows numbers and area codes" }
   validates :address, presence: true
   validates :about, presence: true
   validates :image, presence: true

@@ -12,11 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_area :description %>
+    <%= form.text_area :description, autofocus: true, label: "Set Menu Description", placeholder: 'e.g. Entree:
+    Smoked salmon
+    OR
+    Crackling Pork
+    ....' %>
   </div>
 
   <div class="field">
-    <%= form.text_field :price %>
+    <%= form.text_field :price, prepend: '$', label: "Price per Head", placeholder: 'eg. 89.99', :value => (number_with_precision(form.object.price, :precision => 2)) %>
   </div>
 
   <div class="actions">
