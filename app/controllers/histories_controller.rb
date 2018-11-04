@@ -34,4 +34,7 @@ class HistoriesController < ApplicationController
     @history.save
     #render show history 
   end
+
+
+
 end
