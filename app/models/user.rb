@@ -1,16 +1,29 @@
 class User < ApplicationRecord
+  #### Validations - Email and password are covered by Devise #####
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  #### End Validations #####
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  ##### Stripe User Callback ######
+  
+  after_create_commit :add_customer_id
+
+  ##### End Stripe User Callback ######
+
+  ##### Associations ######
   has_many :reviews
   has_many :caterer_menus
   has_many :messages
   has_many :conversations
   has_many :histories
   has_one :caterer_information
+  ##### End Associations #####
 
   ####### OmniAuth  ###########
   # Below was breaking the app, but I think its essential
@@ -28,4 +41,19 @@ class User < ApplicationRecord
     end
   end
   #### END OMNI #########
+
+  ## ADD STRIPE ID TO USER WHEN SIGNED UP ###
+
+  def add_customer_id
+    if self.customer_id.nil?
+      customer = Stripe::Customer.create(
+    :email => self.email
+  )
+  self.customer_id = customer.id
+  self.save
+  end
+end
+
+###### END STRIPE ######
+
 end

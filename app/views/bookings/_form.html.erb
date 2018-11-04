@@ -1,16 +1,4 @@
-<%= bootstrap_form_with(model: history, local: true) do |form| %>
-  <% if history.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(history.errors.count, "error") %> prohibited this booking from being saved:</h2>
-
-      <ul>
-      <% history.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= bootstrap_form_tag url: '/book' do |form| %>
   <div class="field">
     <%= form.text_field :first_name, value: current_user.first_name %>
   </div>

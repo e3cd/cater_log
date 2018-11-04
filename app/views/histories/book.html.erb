@@ -1,0 +1,45 @@
+<!-- Real simple table to display booking data -->
+<h1>Confirm Booking</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Number of People</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= params[:date] %></td>
+            <td><%= params[:time] %></td>
+            <td><%= params[:number] %></td>
+            <td><%= @price %></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <!-- Link to Stripe Payment -->
+    <%= form_with url: payment_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+          data-description="A month's subscription"
+          data-amount="<%= @price %>"
+          data-locale="auto"
+          data-email="<%= @user.email %>">
+  </script>
+<% end %>
+</div>
+<div>
+    <!-- Link to Edit fields -->
+    EDIT BUTTON - will take them back to form page
+</div>

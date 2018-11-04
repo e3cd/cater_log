@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   ###### HISTORY/BOOKING ######
   # resources :histories
   get '/history', to: 'histories#index', as: 'histories'
-  get '/booking', to: 'histories#new', as: 'new_booking'
+  get '/book', to: 'bookings#new', as: 'new_booking'
+  post '/book', to: 'bookings#create'
+  get '/book/confirm', to: 'histories#book', as: 'confirm_booking'
+  post '/history', to: 'histories#create'
+  post '/process_payment', to: 'charges#process_payment', as: 'payment'
+  get '/success', to: 'histories#success', as: 'success'
   ###### END #######
 
   resources :caterer_menus

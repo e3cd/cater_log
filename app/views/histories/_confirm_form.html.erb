@@ -1,0 +1,31 @@
+<%= bootstrap_form_with(model: history, local: true) do |form| %>
+  <% if history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(history.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.date_field :booking_date, value: params[:date] %>
+  </div>
+
+  <!-- Time is not essential, just looks better -->
+  <div class="field">
+    <%= form.time_field :time, value: params[:time] %>
+  </div>
+
+  <!-- 10 is a redundant number that is just used in place of the per head price -->
+  <div class="field">
+    <%= form.number_field :price, label: "Price", value: ((params[:number].to_f) * 10) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Stripe Payment" %>
+  </div>
+<% end %>

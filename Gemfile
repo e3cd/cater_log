@@ -70,3 +70,5 @@ gem "bootstrap_form", ">= 4.0.0"
 
 gem "faker", "~> 1.9"
 
+
+gem "stripe", "~> 3.29"
