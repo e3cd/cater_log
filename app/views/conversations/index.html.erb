@@ -1,4 +1,4 @@
-  <div>
+<div class="container conversation">
   <div>
     <h3>All Users</h3>
     <% @users.each do |user| %>
@@ -8,3 +8,23 @@
     <% end %>
   </div>
 
+  <div>
+    <h3>My Conversations</h3>
+    <% @conversations.each do |conversation| %>
+      <% if conversation.customer_id == current_user.id || conversation.caterer_id == current_user.id %>
+        <% if conversation.customer_id == current_user.id %>
+          <% recipient = User.find(conversation.caterer_id) %>
+        <% else %>
+          <% recipient = User.find(conversation.customer_id) %>
+        <% end %>
+        <% unless current_user.id == recipient %>
+          <div>
+            <div>
+              <div><%= link_to recipient.email, conversation_messages_path(conversation) %></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

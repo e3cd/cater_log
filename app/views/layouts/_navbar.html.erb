@@ -1,29 +1,28 @@
-<nav class="navbar fixed-top navbar-expand-lg">
-  <div class="navbar-brand" ><%= link_to "Icon Home", root_path %></div>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+  <div class="navbar-brand" >
+    <%= link_to image_tag("cutlery.png") + "CaterLog", root_path, class: "link-to-text-brand" %>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-       <a class="nav-link" href="about">About</a>
+        <p class="nav-link" ><%= link_to "About", about_path, class: "link-to-text-color" %></p>
       </li>
       <li class="nav-item">
-        <p class="nav-link" ><%= link_to "Caterers", event_types_path %></p>
+        <p class="nav-link" ><%= link_to "Caterers", event_types_path, class: "link-to-text-color" %></p>
       </li>
       <li class="nav-item">
-        <p class="nav-link" ><%= link_to "Sign Up", new_user_registration_path %></p>
+        <p class="nav-link" ><%= link_to "Sign Up", new_user_registration_path, class: "link-to-text-color" %></p>
       </li>
       <li class="nav-item">
-        <p class="nav-link" ><%= link_to "Logout", destroy_user_session_path, method: :delete if user_signed_in? %></p>
-      </li>
-      <li class="nav-item">
-        <p class="nav-link" ><%= link_to "Enquire", conversations_path %></p>
+        <p class="nav-link" ><%= link_to "Logout", destroy_user_session_path, class: "link-to-text-color",  method: :delete if user_signed_in? %></p>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <%# <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-default" type="submit">Search</button>
-    </form>
+    </form> %>
   </div>
 </nav>
