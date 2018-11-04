@@ -1,28 +1,32 @@
-<h1>Message <%= @conversation.user.email %></h1>
+<%# <h1>Message <%= @conversation.recipient.name %>
 
-<div>
-  <% @messages.each do |message| %>
-    <% if message.content %>
-      <% user = User.find(message.user_id) %>
-          <table>
-            <tr>
-              <th>
-                <%= user.email %> <%= message.message_time %>
-              </th>
-            </tr>
-              <td>
-                <%= message.content %>
-              <td>
-            </tr>
-          </table>
+<div class="container-fluid message">
+  <div class="container message-content">
+    <div>
+      <% @messages.each do |message| %>
+        <% if message.content %>
+          <% user = User.find(message.user_id) %>
+              <table>
+                <tr>
+                  <th>
+                    <%= user.email %> <%= message.message_time %>
+                  </th>
+                </tr>
+                  <td>
+                    <%= message.content %>
+                  <td>
+                </tr>
+              </table>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= form_for [@conversation, @message] do |f| %>
+      <%= f.text_area :content %>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+      <div>
+        <%= f.submit "Send Message"%>
+      </div>
     <% end %>
-  <% end %>
-</div>
-
-<%= form_for [@conversation, @message] do |f| %>
-  <%= f.text_area :content %>
-  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "Send Message"%>
   </div>
-<% end %>
+</div>

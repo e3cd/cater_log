@@ -1,0 +1,160 @@
+// navbar
+.navbar {
+  // background-color: white;
+  // color: white;
+  // text-decoration: none;
+  // border: 1px solid lightgray;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.link-to-text-brand {
+  text-decoration: none !important;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.link-to-text-color {
+  text-decoration: none !important;
+  color: black;
+
+  &:hover {
+    color: lightgray;
+  }
+}
+
+// display
+.section-1 {
+  height: 100vh;
+}
+
+.box-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-image: url("donuts.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.section1-box1 {
+  margin-left: 100px;
+  position: absolute;
+  top: 40%;
+  font-size: 200%;
+}
+
+h1 {
+  font-size: 250% !important;
+}
+
+// heading 2
+h2 {
+  text-align: center;
+  font-size: 150%;
+}
+
+// Features
+.section-2 {
+  height: 90vh;
+  background-color: whitesmoke;
+}
+
+.box-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-feature {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 30rem;
+}
+
+// Why Us?
+.section-3 {
+  height: 100vh;
+}
+
+.box-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("cater-food.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#card-us {
+  height: 50rem;
+  width: 90rem;
+  opacity: 0.8;
+}
+
+.card-title {
+  font-size: 3em;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-us-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  // height: 500px;
+  // width: 500px;
+  grid-gap: 150px;
+  text-align: center;
+}
+
+.us-image {
+  margin-bottom:20px;
+  width: 100px;
+}
+
+// .card-grid-content {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
+footer {
+  padding-top: 50px;
+  height: 20vh;
+  // background-color: black;
+  // color: white;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+}
+
+.icon {
+  width: 30px;
+  // filter: brightness(0) invert(1);
+}

@@ -1,0 +1,21 @@
+.about {
+  height: 90vh;
+  background-image: url(sushi-platter.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.content {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.about-background {
+  background-color: whitesmoke;
+}
