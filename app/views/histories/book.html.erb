@@ -15,13 +15,29 @@
             <td><%= params[:date] %></td>
             <td><%= params[:time] %></td>
             <td><%= params[:number] %></td>
-            <td><%= @history.price %></td>
+            <td><%= @price %></td>
         </tr>
     </tbody>
 </table>
 <div>
     <!-- Link to Stripe Payment -->
-    CONFIRM BUTTTON
+    <%= form_with url: payment_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+          data-description="A month's subscription"
+          data-amount="<%= @price %>"
+          data-locale="auto"
+          data-email="<%= @user.email %>">
+  </script>
+<% end %>
 </div>
 <div>
     <!-- Link to Edit fields -->

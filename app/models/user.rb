@@ -10,6 +10,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  ##### Stripe User Callback ######
+  
+  after_create_commit :add_customer_id
+
+  ##### End Stripe User Callback ######
+
   ##### Associations ######
   has_many :reviews
   has_many :caterer_menus
@@ -35,4 +41,19 @@ class User < ApplicationRecord
     end
   end
   #### END OMNI #########
+
+  ## ADD STRIPE ID TO USER WHEN SIGNED UP ###
+
+  def add_customer_id
+    if self.customer_id.nil?
+      customer = Stripe::Customer.create(
+    :email => self.email
+  )
+  self.customer_id = customer.id
+  self.save
+  end
+end
+
+###### END STRIPE ######
+
 end

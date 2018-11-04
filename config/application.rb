@@ -29,5 +29,10 @@ module CaterLog
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    #### makes modules in lib accessable across the application ####
+    config.autoload_paths += %W(#{config.root}/lib)
+    
   end
 end
+
+
