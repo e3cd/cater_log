@@ -15,7 +15,7 @@
             <td><%= params[:date] %></td>
             <td><%= params[:time] %></td>
             <td><%= params[:number] %></td>
-            <td><%= @history.price %></td>
+            <td><%= @price %></td>
         </tr>
     </tbody>
 </table>
@@ -33,7 +33,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
           data-description="A month's subscription"
-          data-amount="<%= @history.price %>"
+          data-amount="<%= @price %>"
           data-locale="auto"
           data-email="<%= @user.email %>">
   </script>

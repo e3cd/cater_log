@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/book/confirm', to: 'histories#book', as: 'confirm_booking'
   post '/history', to: 'histories#create'
   post '/process_payment', to: 'charges#process_payment', as: 'payment'
+  get '/success', to: 'histories#success', as: 'success'
   ###### END #######
 
   resources :caterer_menus
