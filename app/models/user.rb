@@ -53,4 +53,7 @@ class User < ApplicationRecord
   self.save
   end
 end
+
+###### END STRIPE ######
+
 end

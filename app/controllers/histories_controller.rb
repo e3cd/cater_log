@@ -33,6 +33,7 @@ class HistoriesController < ApplicationController
     @history.price = (params[:number].to_f * 10) #10 is just a placeholder at the moment
     @history.save
     #render show history 
+    @user = current_user
   end
 
 

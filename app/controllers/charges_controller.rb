@@ -6,27 +6,36 @@ class ChargesController < ApplicationController
     
     def process_payment
       # Amount in cents
-      @amount = 500
+      @amount = booking_price
     
     #   customer = Stripe::Customer.create(
     #     :email => params[:stripeEmail],
     #     :source  => params[:stripeToken]
     #   )
+
+      customer = Stripe::Customer.retrieve(current_user.customer_id)
+      customer.source = params[:stripeToken]
+      customer.save
     
       charge = Stripe::Charge.create(
-        :customer    => customer.id,
+        :customer    => current_user.customer_id,
         :amount      => @amount,
         :description => 'Rails Stripe customer',
         :currency    => 'aud',
-        :source  => params[:stripeToken]
+        
       )
 
     redirect_to caterer_informations_path
     
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to new_charge_path
+      redirect_to caterer_informations_path
     end
 
+    private
+
+    def booking_price
+      
+    end
     
 end
