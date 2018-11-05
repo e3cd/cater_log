@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   root 'home#index'
 
   ###### HISTORY/BOOKING ######
-  # resources :histories
-  get '/history', to: 'histories#index', as: 'histories'
-  get '/book', to: 'bookings#new', as: 'new_booking'
-  post '/book', to: 'bookings#create'
-  get '/book/confirm', to: 'histories#book', as: 'confirm_booking'
-  post '/history', to: 'histories#create'
+  resources :histories
+  #### Look into changing the names of the routes when using resources #####
+  # get '/history', to: 'histories#index', as: 'histories'
+  # get '/book', to: 'histories#new', as: 'new_booking'
+  # post '/history', to: 'histories#create'
+  get '/book/confirm', to: 'histories#confirm', as: 'confirm_booking'
+  # post '/book', to: 'histories#has_paid', as: 'payment'
   post '/process_payment', to: 'charges#process_payment', as: 'payment'
   get '/success', to: 'histories#success', as: 'success'
   ###### END #######
