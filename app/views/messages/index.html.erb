@@ -1,4 +1,4 @@
-<%# <h1>Message <%= @conversation.recipient.name %>
+<%# <h1>Message <%= @conversation.recipient.name %> %>
 
 <div class="container-fluid message">
   <div class="container message-content">
@@ -6,6 +6,9 @@
       <% @messages.each do |message| %>
         <% if message.content %>
           <% user = User.find(message.user_id) %>
+          <% conversation = (Conversation.where(caterer_id: message.user_id)%>
+          <% recipient = User.find(conversation.customer_id))%>
+              <h1><%= message.recipient.email %></h1>
               <table>
                 <tr>
                   <th>
