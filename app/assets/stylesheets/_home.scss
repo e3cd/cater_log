@@ -1,9 +1,6 @@
 // navbar
 .navbar {
-  // background-color: white;
-  // color: white;
-  // text-decoration: none;
-  // border: 1px solid lightgray;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -50,7 +47,7 @@
   margin-left: 100px;
   position: absolute;
   top: 40%;
-  font-size: 200%;
+  font-size: 3em;
 }
 
 h1 {
@@ -82,7 +79,7 @@ h2 {
 }
 
 .card {
-  width: 30rem;
+  width: 20rem;
 }
 
 // Why Us?
@@ -104,12 +101,19 @@ h2 {
 
 #card-us {
   height: 50rem;
-  width: 90rem;
+  width: 80rem;
   opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-title {
   font-size: 3em;
+}
+
+.card-text {
+  word-wrap: break-word;
 }
 
 .card-body {
@@ -122,11 +126,16 @@ h2 {
 .card-us-grid {
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  // height: 500px;
-  // width: 500px;
   grid-gap: 150px;
   text-align: center;
+  height: 450px;
+  width: 450px;
 }
+
+// .grid-us {
+//   height: 150px;
+//   width: 150px;
+// }
 
 .us-image {
   margin-bottom:20px;
