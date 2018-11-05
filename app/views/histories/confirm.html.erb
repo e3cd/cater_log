@@ -4,18 +4,18 @@
 <table>
     <thead>
         <tr>
+            <th>Caterer</th>
             <th>Date</th>
-            <th>Time</th>
             <th>Number of People</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><%= params[:date] %></td>
-            <td><%= params[:time] %></td>
-            <td><%= params[:number] %></td>
-            <td><%= @price %></td>
+            <td><%= @caterer_name %></td>
+            <td><%= @last[:booking_date] %></td>
+            <td><%= @last[:number_of_heads] %></td>
+            <td><%= @total_price %></td>
         </tr>
     </tbody>
 </table>
@@ -33,7 +33,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
           data-description="A month's subscription"
-          data-amount="<%= @price %>"
+          data-amount="<%= @total_price * 100 %>"
           data-locale="auto"
           data-email="<%= @user.email %>">
   </script>

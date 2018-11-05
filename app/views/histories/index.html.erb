@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>History</h1>
+<h1>Histories</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Booking Date</th>
-      <th>Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @histories.each do |history| %>
-    <% if history.user_id == current_user.id %>
       <tr>
-        <td><%= history.caterer_menu.description %></td>
-        <td><%= history.caterer_menu.price %></td>
+        <td><%= link_to 'Show', history %></td>
+        <td><%= link_to 'Edit', edit_history_path(history) %></td>
+        <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New History', new_history_path %>

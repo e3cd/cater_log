@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_100823) do
+ActiveRecord::Schema.define(version: 2018_11_05_043356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,19 +44,6 @@ ActiveRecord::Schema.define(version: 2018_11_04_100823) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "event_types", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "event_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_event_users_on_user_id"
-  end
-
   create_table "histories", force: :cascade do |t|
     t.date "booking_date"
     t.bigint "user_id"
@@ -65,6 +52,11 @@ ActiveRecord::Schema.define(version: 2018_11_04_100823) do
     t.text "stripe_charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "email"
+    t.string "number"
+    t.boolean "has_paid"
+    t.integer "number_of_heads"
     t.index ["caterer_menu_id"], name: "index_histories_on_caterer_menu_id"
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
