@@ -1,8 +1,7 @@
 <%= bootstrap_form_with(model: history, local: true) do |form| %>
   <% if history.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(history.errors.count, "error") %> prohibited this history from being saved:</h2>
-
+    <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
       <ul>
       <% history.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,15 +11,15 @@
   <% end %>
 
   <div>
-    <%= @caterer_name %>
+    <%= form.text_field :caterer_name, value: @caterer_name, label: "Caterer Name", readonly: true %>
   </div>
 
   <div>
-    <%= @menu %>
+    <%= form.text_field :menu, value: @menu, label: "Menu Selected", readonly: true %>
   </div>
 
   <div>
-    <%= @cost %>
+    <%= form.text_field :cost, value: @cost, label: "Cost Per Head", readonly: true %>
   </div>
 
   <div class="field">
@@ -45,8 +44,7 @@
   </div>
 
   <!-- passing caterer_menu.id through -->
-  <% form.hidden_field :caterer, value: params[:menu]  %>
-  <% form.hidden_field :pph, value: @cost  %>
+  <%= form.hidden_field :caterer_menu_id, value: @caterer_menu_id  %>
 
   <div class="actions">
     <%= form.submit "Make Booking" %>
