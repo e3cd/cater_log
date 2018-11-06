@@ -4,4 +4,22 @@
 
 .conversation {
   height: 100vh;
+  margin-top: 80px
+}
+
+.conversation-email {
+	// position: relative;
+  background: darkgray;
+  color: white;
+	border-radius: .4em;
+	margin: 5px;
+}
+
+.link-to-convo-email {
+  text-decoration: none !important;
+  color: white;
+
+  &:hover {
+    color: lightgray;
+  }
 }

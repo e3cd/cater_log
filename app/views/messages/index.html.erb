@@ -1,10 +1,12 @@
-<h1>Message <%= @conversation.caterer.email %>
-
-<div class="container-fluid message">
+<div class="container message">
+  <div class="recipient">
+    <h1 class="text-center">Message <%= @conversation.caterer.email %>
+  </div>
   <div class="container message-content">
     <div>
       <% @messages.each do |message| %>
         <% if message.content %>
+        <%# find the user id %>
           <% user = User.find(message.user_id) %>
               <table>
                 <tr>
@@ -12,15 +14,22 @@
                     <%= user.email %> <%= message.message_time %>
                   </th>
                 </tr>
-                  <td>
-                    <%= message.content %>
-                  <td>
+                <%# added styling in views to distinguish different users as could not embed ruby in scss %>
+                <% if current_user.id == message.user_id %>                
+                <td class="speech-bubble-1" style="background-color:#00aabb">
+                  <%= message.content %>
+                <% else %>
+                  <td class="speech-bubble-2" style="background-color:#c0c0c0">
+                  <%= message.content %>
+                  <% end %>
+                </td>
                 </tr>
               </table>
         <% end %>
       <% end %>
     </div>
 
+  <div>
     <%= form_for [@conversation, @message] do |f| %>
       <%= f.text_area :content %>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
@@ -28,5 +37,6 @@
         <%= f.submit "Send Message"%>
       </div>
     <% end %>
+  </div>
   </div>
 </div>

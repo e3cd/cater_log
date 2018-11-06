@@ -1,14 +1,5 @@
 <div class="container conversation">
   <div>
-    <h3>All Users</h3>
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-       <%= link_to "Message #{user.email}", conversations_path(customer_id: current_user.id, caterer_id: user.id), method: "post" %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div>
     <h3>My Conversations</h3>
     <% @conversations.each do |conversation| %>
       <% if conversation.customer_id == current_user.id || conversation.caterer_id == current_user.id %>
@@ -20,7 +11,9 @@
         <% unless current_user.id == caterer %>
           <div>
             <div>
-              <div><%= link_to caterer.email, conversation_messages_path(conversation) %></div>
+              <div class="conversation-email">
+                <%= link_to caterer.email, conversation_messages_path(conversation), class: "link-to-convo-email" %>
+              </div>
             </div>
           </div>
         <% end %>
