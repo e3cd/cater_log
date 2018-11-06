@@ -33,7 +33,7 @@
       <h6>Price Per Head</h6>
       <p>$<%= number_with_precision(menu.price, :precision => 2) %></p>
       <% unless current_user.is_caterer? %>
-        <%= link_to 'Book', new_booking_path %> |
+        <%= link_to 'Book', new_booking_path(id: menu.id) %> |
         <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>
       <% end %>
       <% if current_user.id == @menu.user_id %>
