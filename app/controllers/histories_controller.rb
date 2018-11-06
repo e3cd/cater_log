@@ -38,6 +38,7 @@ class HistoriesController < ApplicationController
     @history = History.new(history_params)
     @history.price = @total_price
     @history.user_id = current_user.id
+    @history.caterer_name = @caterer_name
     @history.save
     if @history.save
       redirect_to confirm_booking_path, notice: 'Please confirm details.'
