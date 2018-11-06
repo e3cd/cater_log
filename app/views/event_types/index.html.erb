@@ -1,39 +1,30 @@
-<div class="text-center">
+<div class="container-fluid event">
 <h1>Event Type</h1>
-</div>
 
-<div class="jumbotron vertical-right">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <%= image_tag('bride.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Weddings', event_types_weddings_path %></h1>
-            </div>
-            <div class="col-sm">
-                <%= image_tag('cake.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Parties', event_types_parties_path %></h1>
-            </div>
-            <div class="col-sm">
-                <%= image_tag('cocktail.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Cocktails', event_types_cocktails_path %></h1>
-            </div>
+    <div class="event-grid">
+        <div class="event-type">
+            <%= image_tag "bride.png", class: "event-icon" %>
+            <h1><%= link_to 'Weddings', event_types_weddings_path, class: "link-to-text-color" %></h1>
+        </div>
+        <div class="event-type">
+            <%= image_tag "cake.png", class: "event-icon" %>
+            <h1><%= link_to 'Parties', event_types_parties_path, class: "link-to-text-color" %></h1>
+        </div>
+        <div class="event-type">
+            <%= image_tag "cocktail.png", class: "event-icon" %>
+            <h1><%= link_to 'Cocktails', event_types_cocktails_path, class: "link-to-text-color" %></h1>
+        </div>
+        <div class="event-type">
+            <%= image_tag "concert.png", class: "event-icon" %>
+            <h1><%= link_to 'Concerts', event_types_concerts_path, class: "link-to-text-color" %></h1>
+        </div>
+        <div class="event-type">
+            <%= image_tag "presentation.png", class: "event-icon" %>
+            <h1><%= link_to 'Conferences', event_types_conferences_path, class: "link-to-text-color" %></h1>
+        </div>
+        <div class="event-type">
+            <%= image_tag "shoes.png", class: "event-icon" %>
+            <h1><%= link_to 'Formal', event_types_formal_path, class: "link-to-text-color" %></h1>
         </div>
     </div>
-</div>
-
-<div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <%= image_tag('concert.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Concerts', event_types_concerts_path %></h1>
-            </div>
-            <div class="col-sm">
-                <%= image_tag('presentation.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Conferences', event_types_conferences_path %></h1>
-            </div>
-            <div class="col-sm">
-                <%= image_tag('shoes.png', height: '200', width: '200') %>
-                <h1><%= link_to 'Formal', event_types_formal_path %></h1>
-            </div>
-        </div>
-    </div>
+<div>

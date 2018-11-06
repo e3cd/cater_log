@@ -1,6 +1,6 @@
 class Conversation < ApplicationRecord
-  belongs_to :user, foreign_key: :caterer_id, class_name: "User"
-  belongs_to :user, foreign_key: :customer_id , class_name: "User"
+  belongs_to :caterer, foreign_key: :caterer_id, class_name: "User"
+  belongs_to :customer, foreign_key: :customer_id , class_name: "User"
   
   has_many :messages
   validates_uniqueness_of :customer_id, scope: :caterer_id

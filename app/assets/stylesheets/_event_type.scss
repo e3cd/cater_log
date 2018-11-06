@@ -1,0 +1,17 @@
+.event {
+  height: 100vh;
+}
+
+.event-icon {
+  height: 200px;
+  width: 200px;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  // grid-gap: 150px;
+  text-align: center;
+  height: 300px;
+  width: 300px;
+}
