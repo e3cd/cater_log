@@ -33,19 +33,19 @@
       <h6>Price Per Head</h6>
       <p>$<%= number_with_precision(menu.price, :precision => 2) %></p>
       <% unless current_user.is_caterer? %>
-        <%= link_to 'Book', new_history_path(menu: menu.id) %>
+        <%= link_to 'Book', new_booking_path %> |
+        <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>
+      <% end %>
+      <% if current_user.id == @menu.user_id %>
+        <%= link_to 'Edit Menu', edit_caterer_menu_path %>
       <% end %>
     </div>
     <% @i += 1 %>
   <% end %>
 </p>
 
-<p>
-  <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>
-</p>
 
-
-<%= link_to 'Edit', edit_caterer_information_path(@caterer_information) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Look For Caterers', event_types_path %> |
+<%= link_to 'Home', root_path %> 
 
 
