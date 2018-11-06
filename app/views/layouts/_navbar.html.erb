@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   
-        User       
+          <%= current_user.first_name %>       
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
         <% if current_user.is_caterer? %>
