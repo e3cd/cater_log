@@ -1,30 +1,3 @@
-// navbar
-.navbar {
-  width: 100%;
-}
-
-.navbar-brand {
-  color: black;
-}
-
-.link-to-text-brand {
-  text-decoration: none !important;
-  color: black;
-
-  &:hover {
-    color: black;
-  }
-}
-
-.link-to-text-color {
-  text-decoration: none !important;
-  color: black;
-
-  &:hover {
-    color: lightgray;
-  }
-}
-
 // display
 .section-1 {
   height: 100vh;
@@ -35,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  background-image: url("donuts.jpg");
+  background-image: asset_url("donuts.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,32 +27,32 @@ h1 {
   font-size: 250% !important;
 }
 
-// heading 2
-h2 {
-  text-align: center;
-  font-size: 150%;
-}
 
 // Features
 .section-2 {
-  height: 90vh;
-  background-color: whitesmoke;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  // background-color: black;
+}
+
+.card-feature{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+h2 {
+  text-align: center;
+  font-size: 150%;
+  color: white;
 }
 
 .box-2 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-.card-feature {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 20rem;
 }
 
 // Why Us?
@@ -99,59 +72,20 @@ h2 {
   background-size: cover;
 }
 
-#card-us {
-  height: 50rem;
-  width: 80rem;
-  opacity: 0.8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.card-title {
-  font-size: 3em;
-}
-
-.card-text {
-  word-wrap: break-word;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+h5 {
+  font-size: 3em !important;
 }
 
 .card-us-grid {
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-gap: 150px;
+  grid-gap: 50px;
   text-align: center;
-  height: 450px;
-  width: 450px;
+  height: 500px;
+  width: 500px;
 }
 
 .us-image {
   margin-bottom:20px;
   width: 100px;
-}
-
-footer {
-  padding-top: 50px;
-  height: 20vh;
-  background-color: whitesmoke;
-}
-
-.footer-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 10vh;
-}
-
-.icon {
-  width: 30px;
-  // filter: brightness(0) invert(1);
-}
+} 

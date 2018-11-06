@@ -1,26 +1,21 @@
 <div class="text-center">
-<h1>Weddings</h1>
+    <h1>Weddings</h1>
 </div>
 
-<% @wedding.each do |wedding| %>
-    <p>
-        <%= image_tag wedding.image_url %>
-    </p>
-    <p>
-        <strong>Name:</strong>
-        <%= wedding.business_name %>
-    </p>
-    <p>
-        <strong>Address:</strong>
-        <%= wedding.address %>
-    </p>
-    <p>
-        <strong>About:</strong>
-        <%= wedding.about %>
-    </p>
-    <p>
-        <%= link_to 'profile', caterer_information_path(wedding.user_id) %>
-    </p>
-<% end %>
-
-<%= link_to 'Back', event_types_path %>
+<div class="container card-event p-2">
+    <% @wedding.each do |wedding| %>
+        <div class="card">
+            <img class="card-img-top" src=<%= wedding.image_url %> alt="Card image cap">
+            <div class="card-body"> 
+                <h5 class="card-title"><%= wedding.business_name %></h5>
+                <p class="card-text"><%= wedding.address %></p>
+                <p class="card-text"><%= wedding.about %></p>
+                <%= link_to 'More Information', caterer_information_path(wedding.user_id), class: "btn btn-outline-dark btn-sm" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+    
+<div class="back-button">
+    <%= link_to 'Back', event_types_path, class: "btn btn-outline-dark btn-sm back-button" %>
+</div>

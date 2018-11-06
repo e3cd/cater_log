@@ -1,5 +1,14 @@
 .event {
-  height: 100vh;
+  margin-top: 70px;
+  height: 80vh;
+}
+
+.event-box {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center
 }
 
 .event-icon {
@@ -10,8 +19,20 @@
 .event-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  // grid-gap: 150px;
+  grid-gap: 50px;
   text-align: center;
-  height: 300px;
-  width: 300px;
+}
+
+.event-type {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.link-to-text-event {
+  text-decoration: none !important;
+  color: black;
+
+  &:hover {
+    color: lightgray;
+  }
 }

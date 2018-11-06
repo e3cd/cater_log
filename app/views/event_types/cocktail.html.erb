@@ -1,27 +1,21 @@
 <div class="text-center">
-<h1>Cocktails</h1>
+    <h1>Cocktails</h1>
 </div>
 
-<% @cocktail.each do |cocktail| %>
-    <p>
-        <%= image_tag cocktail.image_url %>
-    </p>
-    <p>
-        <strong>Name:</strong>
-        <%= cocktail.business_name %>
-    </p>
-    <p>
-        <strong>Address:</strong>
-        <%= cocktail.address %>
-    </p>
-    <p>
-        <strong>About:</strong>
-        <%= cocktail.about %>
-    </p>
-    <p>
-        <%= link_to 'profile', caterer_information_path(cocktail.user_id) %>
-    </p>
-
-<% end %>
-
-<%= link_to 'Back', event_types_path %>
+<div class="container card-event p-2">
+    <% @cocktail.each do |cocktail| %>
+        <div class="card">
+            <img class="card-img-top" src=<%= cocktail.image_url %> alt="Card image cap">
+            <div class="card-body"> 
+                <h5 class="card-title"><%= cocktail.business_name %></h5>
+                <p class="card-text"><%= cocktail.address %></p>
+                <p class="card-text"><%= cocktail.about %></p>
+                <%= link_to 'More Information', caterer_information_path(cocktail.user_id), class: "btn btn-outline-dark btn-sm" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+    
+<div class="back-button">
+    <%= link_to 'Back', event_types_path, class: "btn btn-outline-dark btn-sm back-button" %>
+</div>

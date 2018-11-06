@@ -2,6 +2,7 @@
 
 <h1>History</h1>
 
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -27,8 +28,24 @@
         <% end %>
         <td><%= history[:number_of_heads] %></td>
         <td>$<%= number_with_precision(history[:price], :precision => 2) %></td>
-        <td>REVIEWS???</td>
+        <% if @review.find_by(history_id: history[:id]) %>
+          <td href="<% review_path(id: @review.find_by(history_id: history[:id]).id) %>">
+          <% @review.find_by(history_id: history[:id])[:rating].times do %>
+             <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          <% end %>
+          <% @review.find_by(history_id: history[:id]).blank_stars.times do %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+          </td>
+        <% elsif history[:booking_date] < @date %>
+          <td><%= link_to 'Add Review', new_review_path(:history_id => history[:id]) %></td>
+        <% else %>
+          <td> Event has not Occured</td>
+        <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<!-- Make stars show up!!! And make them link to review -->
+<!-- thumbnail img-responsive -->
