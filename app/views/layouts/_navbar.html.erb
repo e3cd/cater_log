@@ -27,12 +27,20 @@
         User       
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <% if current_user.is_caterer? %>
             <div class="dropdown-item" >
-              <%= link_to "My Profile", caterer_informations_path, class: "link-to-text-color" %>
+              <%= link_to "My Profile", caterer_information_path(current_user.id), class: "link-to-text-color" %>
             </div>
-            <a class="dropdown-item" href="#">Conversations</a>
-            <a class="dropdown-item" href="#">History</a>
-            <div class="dropdown-item" ><%= link_to "Logout", destroy_user_session_path, class: "link-to-text-color",  method: :delete %></div>
+          <% end %>
+            <div class="dropdown-item" >
+              <%= link_to "Conversations", conversations_path(customer_id: current_user.id, caterer_id: params[:id]), class: "link-to-text-color" %>
+            </div>
+            <div class="dropdown-item" >
+              <%= link_to "My History", histories_path(current_user.id), class: "link-to-text-color" %>
+            </div>
+            <div class="dropdown-item" >
+             <%= link_to "Logout", destroy_user_session_path, class: "link-to-text-color",  method: :delete %>
+            </div>
         </div>
         </li>
         <% end %>

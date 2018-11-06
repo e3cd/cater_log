@@ -41,7 +41,7 @@
 </p>
 
 <p>
-  <%= link_to 'Enquire'%>
+  <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>
 </p>
 
 
