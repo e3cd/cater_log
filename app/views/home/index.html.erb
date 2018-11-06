@@ -40,7 +40,7 @@
               <div class="card-body"> 
                 <h5 class="card-title"><%= caterer.business_name %></h5>
                 <p class="card-text"><%= caterer.about %></p>
-                <a href="#" class="btn btn-outline-dark btn-sm">More Information</a>
+                <%= link_to 'More Information', caterer_information_path(caterer.id), class: "btn btn-outline-dark btn-sm" %>
               </div>
             </div>
           <% end %>
