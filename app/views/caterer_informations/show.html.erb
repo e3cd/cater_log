@@ -33,7 +33,7 @@
       <h6>Price Per Head</h6>
       <p>$<%= number_with_precision(menu.price, :precision => 2) %></p>
       <% unless current_user.is_caterer? %>
-        <%= link_to 'Book', new_history_path(menu: menu.id) %>
+        <%= link_to 'Book', new_booking_path %>
       <% end %>
     </div>
     <% @i += 1 %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_043356) do
+ActiveRecord::Schema.define(version: 2018_11_06_032111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_043356) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "email"
-    t.string "number"
+    t.string "caterer_name"
     t.boolean "has_paid"
     t.integer "number_of_heads"
     t.index ["caterer_menu_id"], name: "index_histories_on_caterer_menu_id"

@@ -6,11 +6,13 @@ class HistoriesController < ApplicationController
   def index
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
-      @current_caterer_menus = CatererMenu.where(user_id: current_user.id)
       @histories = []
-      @current_caterer_menus.each do |menu|
+      #Loop through all the caterer menus to find which ones are in history
+      current_user.caterer_menus.each do |menu|
         @histories.push(History.where(caterer_menu_id: menu.id))
       end
+      #Little hack, as it saves an array
+      @histories = @histories[0]
     else
       #If current user is a customer, only show their history
       @histories = History.where(user_id: current_user.id)
@@ -38,7 +40,7 @@ class HistoriesController < ApplicationController
     @caterer_menu_id = params[:history][:caterer_menu_id]
     @caterer_menu = CatererMenu.find(@caterer_menu_id)
     @cost = @caterer_menu[:price]
-    @total_price = @cost * (params[:history][:number_of_heads]).to_i #* 100 #times 100 as Stripe deals in cents
+    @total_price = @cost * (params[:history][:number_of_heads]).to_f #* 100 #times 100 as Stripe deals in cents
 
     #Saving History to the database
     @history = History.new(history_params)
@@ -56,8 +58,7 @@ class HistoriesController < ApplicationController
     end
   end
 
-  # DELETE /histories/1
-  # DELETE /histories/1.json
+
   def destroy
     @history.destroy
     respond_to do |format|
@@ -65,6 +66,7 @@ class HistoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   def confirm
     @last = History.last
@@ -74,14 +76,15 @@ class HistoriesController < ApplicationController
     @user = current_user
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_history
+
+  def set_history
       @history = History.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def history_params
-      params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :number)
+      params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :caterer_name)
     end
 end

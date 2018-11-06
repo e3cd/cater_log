@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>History</h1>
+<!-- Can be deleted if not used, trying to make each row clickable to take them to a show page to see more info -->
+<script>
+  $("tr").click(function() {
+    window.location = $(this).data("link")
+  })
+</script>
 
 <table class="table table-striped">
   <thead>
@@ -17,8 +20,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @histories.each do |history| %>
-    <tr>
+    <%= @histories.each do |history| %>
+    <tr data-link="<%= history_path(history.id) %>">
         <td><%= history[:booking_date] %></td>
         <% if current_user.is_caterer %>
           <td><%= history[:first_name] %></td>
