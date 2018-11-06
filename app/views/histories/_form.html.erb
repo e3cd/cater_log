@@ -1,25 +1,14 @@
 <%= bootstrap_form_with(model: history, local: true) do |form| %>
-  <% if history.errors.any? %>
-    <div id="error_explanation">
-    <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-      <ul>
-      <% history.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
-    <%= form.text_field :caterer_name, value: @caterer_name, label: "Caterer Name", readonly: true %>
+    <%= @caterer_name %>
   </div>
 
   <div>
-    <%= form.text_field :menu, value: @menu, label: "Menu Selected", readonly: true %>
+    <%= @menu %>
   </div>
 
   <div>
-    <%= form.text_field :cost, value: @cost, label: "Cost Per Head", readonly: true %>
+    <%= @cost %>
   </div>
 
   <div class="field">
@@ -31,16 +20,11 @@
   </div>
 
   <div class="field">
-    <%= form.telephone_field :number, label: "Contact Number" %>
+    <%= form.date_field :booking_date, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= form.date_field :booking_date %>
-  </div>
-
-  <div class="field">
-  <!-- Set up a range between 20 - 200 or there abouts ... somehting to do with in: 20..200 -->
-    <%= form.number_field :number_of_heads, label: "Number of people"  %>
+  <div class="field"> 
+    <%= form.number_field :number_of_heads, label: "Number of people", placeholder: "Number between 20 and 200", in: 20..200  %>
   </div>
 
   <!-- passing caterer_menu.id through -->

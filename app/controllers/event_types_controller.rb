@@ -3,11 +3,11 @@ class EventTypesController < ApplicationController
   end
 
   def party
-    @party = CatererInformation.where(type_of_event: 0)
+    @party = CatererInformation.where(type_of_event: 1)
   end
 
   def wedding
-    @wedding = CatererInformation.where(type_of_event: 1)
+    @wedding = CatererInformation.where(type_of_event: 0)
   end
 
   def conference
