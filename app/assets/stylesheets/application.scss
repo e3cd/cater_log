@@ -19,12 +19,14 @@
 @import "bootstrap";
 
 body {
-  margin-top: 70px;
+  // margin-top: 70px !important;
 }
 
+@import "nav-footer";
 @import "home";
 @import "about";
 @import "conversations";
 @import "messages";
 @import "form";
 @import "event_type";
+@import "card";
