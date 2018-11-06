@@ -31,6 +31,7 @@ module CaterLog
     config.generators.system_tests = nil
     #### makes modules in lib accessable across the application ####
     config.autoload_paths += %W(#{config.root}/lib)
+    config.assets.initialize_on_precompile = false
     
   end
 end
