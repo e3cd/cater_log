@@ -4,6 +4,7 @@ class HistoriesController < ApplicationController
 
   #Show all histories for the unique user
   def index
+    @date = Date.today
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
       @histories = []
@@ -17,6 +18,8 @@ class HistoriesController < ApplicationController
       #If current user is a customer, only show their history
       @histories = History.where(user_id: current_user.id)
     end
+    @histories = @histories.sort_by &:booking_date
+    @review = Review.all
   end
 
   # GET /histories/1
@@ -80,11 +83,11 @@ class HistoriesController < ApplicationController
   private
 
   def set_history
-      @history = History.find(params[:id])
-    end
+    @history = History.find(params[:id])
+  end
 
 
-    def history_params
-      params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :caterer_name)
-    end
+  def history_params
+    params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :caterer_name)
+  end
 end
