@@ -1,44 +1,29 @@
-<!-- Real simple table to display booking data -->
-<p id="notice"><%= notice %></p>
-<h1>Confirm Booking</h1>
+<div class="container card-event p-4 m-4">
+    <div class="card">
+        <div class="card-body"> 
+            <h6 class="card-title">Confirm Booking</h6>
+            <h4 class="card-text"><%= @caterer_name %></h4>
+            <p class="card-text">Date: <%= @last[:booking_date] %></p>
+            <p class="card-text">Number of People: <%= @last[:number_of_heads] %></p>
 
-<table>
-    <thead>
-        <tr>
-            <th>Caterer</th>
-            <th>Date</th>
-            <th>Number of People</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><%= @caterer_name %></td>
-            <td><%= @last[:booking_date] %></td>
-            <td><%= @last[:number_of_heads] %></td>
-            <td><%= @total_price %></td>
-        </tr>
-    </tbody>
-</table>
-<div>
-    <!-- Link to Stripe Payment -->
-    <%= form_with url: payment_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @total_price * 100 %>"
-          data-locale="auto"
-          data-email="<%= @user.email %>">
-  </script>
-<% end %>
+            <!-- Link to Stripe Payment -->
+            <%= form_with url: payment_path do %>
+                <article>
+                    <% if flash[:error].present? %>
+                        <div id="error_explanation">
+                            <p><%= flash[:error] %></p>
+                        </div>
+                    <% end %>
+                </article>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
+                    data-description="<%= @caterer_name %>"
+                    data-amount="<%= @total_price * 100 %>"
+                    data-locale="auto"
+                    data-email="<%= @user.email %>"
+                    data-label="$<%= @total_price %>">
+                </script>
+            <% end %>
+        </div>
+    </div>
 </div>
-
-

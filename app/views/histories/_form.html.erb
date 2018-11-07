@@ -1,38 +1,43 @@
-<%= bootstrap_form_with(model: history, local: true) do |form| %>
-  <div>
-    <%= @caterer_name %>
+<div class="container card-event p-3 m-2">
+  <%= bootstrap_form_with(model: history, local: true) do |form| %>
+    <div>
+      <h6 class="card-title text-center">Book <%= @caterer_name %></h6>
+    </div>
+
+    <div>
+      <h6 class="card-subtitle text-center py-3">Menu Option:</h6>
+      <p class="col-8 mx-auto"><%= @menu %></p>
+    </div>
+
+    <div>
+      <h6 class="card-subtitle text-center">Total Price: <%= @cost %></h6>
+    </div>
+
+    <div class="field col-8 mx-auto">
+      <%= form.text_field :first_name, value: current_user.first_name %>
+    </div>
+
+    <div class="field col-8 mx-auto">
+      <%= form.text_field :email, label: "Contact Email", value: current_user.email %>
+    </div>
+
+    <div class="field col-8 mx-auto">
+      <%= form.date_field :booking_date, autofocus: true %>
+    </div>
+
+    <div class="field col-8 mx-auto"> 
+      <%= form.number_field :number_of_heads, label: "Number of people", placeholder: "Number between 20 and 200", in: 20..200  %>
+    </div>
+
+    <!-- passing caterer_menu.id through -->
+    <%= form.hidden_field :caterer_menu_id, value: @caterer_menu_id  %>
+
+    <div class="actions col-2 mx-auto">
+      <%= form.submit "Make Booking" %>
+    </div>
+    
+  <% end %>
+  <div class="mx-auto pt-3">
+    <p><%= link_to 'History', histories_path %></p>
   </div>
-
-  <div>
-    <%= @menu %>
-  </div>
-
-  <div>
-    <%= @cost %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :first_name, value: current_user.first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :email, label: "Contact Email", value: current_user.email %>
-  </div>
-
-  <div class="field">
-    <%= form.date_field :booking_date, autofocus: true %>
-  </div>
-
-  <div class="field"> 
-    <%= form.number_field :number_of_heads, label: "Number of people", placeholder: "Number between 20 and 200", in: 20..200  %>
-  </div>
-
-  <!-- passing caterer_menu.id through -->
-  <%= form.hidden_field :caterer_menu_id, value: @caterer_menu_id  %>
-
-  <div class="actions">
-    <%= form.submit "Make Booking" %>
-  </div>
-  
-<% end %>
-
+</div>

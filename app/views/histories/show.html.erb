@@ -1,4 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_history_path(@history) %> |
-<%= link_to 'Back', histories_path %>
+<div class="container card-event p-4 m-4">
+    <div class="card">
+        <div class="card-body"> 
+            <h6 class="card-title"><span class="font-weight-bold">Booking</h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Date: </span>
+                <%= @history[:booking_date] %>
+            </h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Caterer: </span>
+                <%= @history[:caterer_name] %>
+            </h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Price: </span>
+                <%= @history[:price] %>
+            </h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Number of People: </span>
+                <%= @history[:number_of_heads] %>
+            </h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Booking Name: </span>
+                <%= @history[:first_name] %>
+            </h6>
+            <h6 class="card-text">
+                <span class="font-weight-bold">Booking Email: </span>
+                <%= @history[:email] %>
+            </h6>
+            <% if @review %>
+                <h6 class="card-text col-10 text-center">
+                    <span class="font-weight-bold">Review: </span>
+                    <%= @review.content %>
+                </h6>
+                <h6 class="card-text">
+                    <% @review.rating.times do %>
+                        <%= octicon "star" %>
+                    <% end %>
+                </h6>
+            <% end %>
+            <%= link_to "Back", histories_path %>
+        </div>
+    </div>
+</div>
