@@ -1,68 +1,66 @@
+<div class="container-fluid section-1 box-1">
+</div>
 
-
-      <div class="container-fluid section-1 box-1">
+<div class="section1-box1">
+  <h1>Book caterers for any event, online</h1>
+  <p>Save yourself some time and book a caterer.</p>
+  <% unless user_signed_in? %>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group" role="group" aria-label="caterer">
+        <a href="users/sign_up" class="btn btn-outline-dark btn-md" role="button">I am a caterer</a>
       </div>
-
-      <div class="section1-box1">
-        <h1>Book caterers for any event, online</h1>
-        <p>Save yourself some time and book a caterer.</p>
-        <% unless user_signed_in? %>
-          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="caterer">
-              <a href="users/sign_up" class="btn btn-outline-dark btn-md" role="button">I am a caterer</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="customer">
-              <a href="event_types" class="btn btn-outline-dark btn-md" role="button">I am looking for a caterer</a>
-            </div>
-          </div>
-        <% end %>
+      <div class="btn-group" role="group" aria-label="customer">
+        <a href="event_types" class="btn btn-outline-dark btn-md" role="button">I am looking for a caterer</a>
       </div>
+    </div>
+  <% end %>
+</div>
 
-      <div class="container-fluid section-2 box-2">
-        <h2>Featured</h2>
-        <div class="card-feature">
-          <% @caterer_information.each do |caterer|%>
-            <div class="card">
-              <img class="card-img-top" src=<%= caterer.image %> alt="Card image cap">
-              <div class="card-body"> 
-                <h5 class="card-title"><%= caterer.business_name %></h5>
-                <p class="card-text"><%= caterer.about %></p>
-                <%= link_to 'More Information', caterer_information_path(caterer.id), class: "btn btn-outline-dark btn-sm" %>
-              </div>
-            </div>
-          <% end %>
+<div class="container-fluid section-2 box-2">
+  <h2>Featured</h2>
+  <div class="card-feature">
+    <% @caterer_information.each do |caterer|%>
+      <div class="card">
+        <img class="card-img-top" src=<%= caterer.image %> alt="Card image cap">
+        <div class="card-body"> 
+          <h5 class="card-title"><%= caterer.business_name %></h5>
+          <p class="card-text"><%= caterer.about %></p>
+          <%= link_to 'More Information', caterer_information_path(caterer.id), class: "btn btn-outline-dark btn-sm" %>
         </div>
       </div>
-      
-      <div class="section-3 box-3">
-        <div class="card shadow p-3 mb-5 bg-white rounded" id="card-us">
-          <div class="container">
-          <h5 class="text-center">Why Us?</h5>
-            <div class="card-body">
-              
-              <div class="card-us-grid">
-                <div class="grid-us">
-                  <%= image_tag "booking.png", class: "us-image" %>
-                  <h6 class="card-subtitle mb-2 text-muted">Easy to Book</h6>
-                  <p class="card-text">Our booking system allows you to book on the spot!</p>
-                </div>
-                <div class="grid-us">
-                  <%= image_tag "speak.png", class: "us-image" %>
-                  <h6 class="card-subtitle mb-2 text-muted">Quick Reply</h6>
-                  <p class="card-text">Caterers respond within the day of enquiry</p>
-                </div>
-                <div class="grid-us">
-                  <%= image_tag "multiple.png", class: "us-image" %>
-                  <h6 class="card-subtitle mb-2 text-muted">Wide selections</h6>
-                  <p class="card-text">Many caterers with specialties in different types of events</p>
-                </div>
-                <div class="grid-us">
-                  <%= image_tag "hourglass.png", class: "us-image" %>
-                  <h6 class="card-subtitle mb-2 text-muted">Save time</h6>
-                  <p class="card-text">Save time browsing many websites by finding caterers in one location</p>
-                </div>
-              </div>
-            </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="section-3 box-3">
+  <div class="card shadow p-3 mb-5 bg-white rounded" id="card-us">
+    <div class="container">
+    <h5 class="text-center">Why Us?</h5>
+      <div class="card-body">
+        
+        <div class="card-us-grid">
+          <div class="grid-us">
+            <%= image_tag "booking.png", class: "us-image" %>
+            <h6 class="card-subtitle mb-2 text-muted">Easy to Book</h6>
+            <p class="card-text">Our booking system allows you to book on the spot!</p>
+          </div>
+          <div class="grid-us">
+            <%= image_tag "speak.png", class: "us-image" %>
+            <h6 class="card-subtitle mb-2 text-muted">Quick Reply</h6>
+            <p class="card-text">Caterers respond within the day of enquiry</p>
+          </div>
+          <div class="grid-us">
+            <%= image_tag "multiple.png", class: "us-image" %>
+            <h6 class="card-subtitle mb-2 text-muted">Wide selections</h6>
+            <p class="card-text">Many caterers with specialties in different types of events</p>
+          </div>
+          <div class="grid-us">
+            <%= image_tag "hourglass.png", class: "us-image" %>
+            <h6 class="card-subtitle mb-2 text-muted">Save time</h6>
+            <p class="card-text">Save time browsing many websites by finding caterers in one location</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>

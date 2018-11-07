@@ -15,6 +15,10 @@ class History < ApplicationRecord
   validates_date :booking_date, :on_or_before => lambda { 180.days.from_now }
   validates :number_of_heads, numericality: { only_integer: true, greater_than: 10, less_than: 200 }
   #### End Validations ####
+
+  def self.no_history(id)
+    self.find_by(user_id: id) == nil
+  end
 end
 
 #### LIMIT ACCESS TO REVIEWS FOR IF CURRENT USER IS PRESENT IN REVIEW>USER_ID ##
