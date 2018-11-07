@@ -1,24 +1,41 @@
-# README
+# Ruby on Rails two-sided marketplace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Collaborators
 
 Things you may want to cover:
 
-* Ruby version
+### [Website Link]
 
-* System dependencies
+### [Github Repository]
 
-* Configuration
+## Introduction
 
-* Database creation
+### Problem definition / purpose
 
-* Database initialization
+### Functionality / features
 
-* How to run the test suite
+### Screenshots
 
-* Services (job queues, cache servers, search engines, etc.)
+### Tech stack (e.g. html, css, deployment platform, etc)
 
-* Deployment instructions
+### Instructions on how to setup, configure and use your App.
 
-* ...
+## Design Process
+
+### Design process
+
+### User stories
+
+### A workflow diagram of the user journey
+
+### Tech stack 
+
+### Instructions on how to setup, configure and use your App.
+
+## Planning Process
+
+### Project plan & timeline
+
+### Screenshots of Trello board(s)
+
+## Answers to the Short Answer questions
