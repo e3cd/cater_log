@@ -2,6 +2,7 @@ class HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_history, only: [:show, :edit, :update, :destroy]
   before_action :set_caterer_menu_id, only: [:new, :create]
+  before_action :is_customer, only: [:new, :create, :confirm]
 
   #Show all histories for the unique user
   def index
@@ -84,5 +85,11 @@ class HistoriesController < ApplicationController
     @caterer_name = CatererInformation.find_by(user_id: @caterer_menu.user_id)[:business_name]
     @menu = @caterer_menu[:description]
     @cost = @caterer_menu[:price]
+  end
+
+  def is_customer
+    if current_user.is_caterer?
+      redirect_to root_path, notice: "Caterers cannot make bookings"
+    end
   end
 end
