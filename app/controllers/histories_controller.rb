@@ -28,6 +28,7 @@ class HistoriesController < ApplicationController
   # GET /histories/1
   # GET /histories/1.json
   def show
+    @review = History.any_review(@history)
   end
 
   def new

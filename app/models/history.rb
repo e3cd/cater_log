@@ -19,4 +19,8 @@ class History < ApplicationRecord
   def self.no_history(id)
     self.find_by(user_id: id) == nil
   end
+
+  def self.any_review(history)
+    history.review if history.review != nil
+  end
 end
