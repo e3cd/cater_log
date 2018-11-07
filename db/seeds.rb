@@ -58,7 +58,7 @@ n.times do
         stripe_charge_id: "ch_1DT" + Faker::Crypto.sha1[0..21],
         first_name: User.find(random_user).first_name,
         email: User.find(random_user).email,
-        caterer_name: CatererMenu.find(5).user.caterer_information.business_name,
+        caterer_name: CatererMenu.find(random_menu).user.caterer_information.business_name,
         has_paid: true
     )
     histories.push(history)
