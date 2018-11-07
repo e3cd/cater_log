@@ -1,5 +1,5 @@
 class CatererInformationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new]
   before_action :set_caterer_information, only: [:edit, :update, :destroy]
   ############ Before action - ensure is_caterer #####################
   # before_action :is_caterer
