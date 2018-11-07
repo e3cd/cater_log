@@ -22,9 +22,11 @@ class ChargesController < ApplicationController
       @last = History.last 
       @last.stripe_charge_id = charge.id
       @last.has_paid = true
-      @last.save
-      flash[:notice] = "Thanks #{current_user.first_name}! Your booking is complete!"
-      redirect_to histories_path
+      if @last.save
+        UserMailer.with(user: @user).booking_successful.deliver_later
+        flash[:notice] = "Thanks #{current_user.first_name}! Your booking is complete!"
+        redirect_to histories_path
+      end
   
       #Stripes rescue clause
       rescue Stripe::CardError => e

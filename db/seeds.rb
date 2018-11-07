@@ -17,7 +17,8 @@ n.times do
         email: Faker::Internet.email,
         password: "password",#Faker::Internet.password(8),
         is_caterer: [true, false].sample,
-        customer_id: "cus_DvC" + Faker::Crypto.sha1[0..11]
+        ##### NOT NEEDED AS ITS AUTOMATICALLY DONE #######
+        # customer_id: "cus_DvC" + Faker::Crypto.sha1[0..11]
     )
     user.is_caterer? ? caterer_users.push(user.id) : customer_users.push(user.id)
 end
