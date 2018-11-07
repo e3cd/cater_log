@@ -26,17 +26,17 @@ end
 n.times do 
     random_caterer = caterer_users.sample
     info = CatererInformation.create(
-        business_name: Faker::Food.dish,
+        business_name: Faker::Company.name,
         user_id: random_caterer,
         number: Faker::Number.number(10),
         address: Faker::Address.street_address,
-        remote_image_url: Faker::LoremFlickr.image,
-        about: Faker::MichaelScott.quote,
+        remote_image_url: Faker::Company.logo,
+        about: Faker::SiliconValley.quote,
         type_of_event: rand(6).to_i
     )
 
     menu = CatererMenu.create(
-        description: Faker::HowIMetYourMother.quote,
+        description: Faker::Food.description,
         price: Faker::Number.decimal(2),
         user_id: random_caterer
     )
@@ -45,14 +45,12 @@ end
 
 ######### HISTORY #############
 n.times do
-    #either 0 or 1 to randomise the booking day before or after the current date, so that reviews can be added
-    date_of_booking = rand(2).to_i
     random_menu = caterer_menus.sample
     random_number = rand(20..200)
     random_user = customer_users.sample
     history = History.create(
         #When seeding booking-date, 'on_or_after' must be commented out in 'history.rb', so previous records can be created
-        booking_date: ( date_of_booking == 1 ? Faker::Date.backward(60) : Faker::Date.forward(180) ),
+        booking_date: [Faker::Date.backward(60), Faker::Date.forward(180)].sample,
         user_id: random_user,
         caterer_menu_id: random_menu,
         number_of_heads: random_number,
@@ -72,7 +70,7 @@ histories.each do |history|
     if history.booking_date < 15.days.ago
         review = Review.create(
             rating: rand(6).to_i,
-            content: Faker::RickAndMorty.quote,
+            content: Faker::FamousLastWords.last_words,
             user_id: history.user_id,
             history_id: history.id
         )
@@ -98,12 +96,11 @@ end
 conversations.each do |conversation|
     #Up to 5 messages in each conversation
     m = rand(6)
-    random_chance_user = rand(2)
     m.times do
         message = Message.create(
-            content: Faker::Simpsons.quote,
+            content: Faker::GreekPhilosophers.quote,
             conversation_id: conversation.id,
-            user_id: random_chance_user == 1 ? conversation.customer_id : conversation.caterer_id 
+            user_id: [conversation.customer_id, conversation.caterer_id].sample 
         )
     end
 end
