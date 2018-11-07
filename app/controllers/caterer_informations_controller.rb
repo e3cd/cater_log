@@ -3,6 +3,7 @@ class CatererInformationsController < ApplicationController
   before_action :set_caterer_information, only: [:edit, :update, :destroy, :show]
   ############ Before action - ensure is_caterer #####################
   # before_action :is_caterer
+  before_action :has_profile, only: [:show]
 
   # GET /caterer_informations
   # GET /caterer_informations.json
@@ -83,7 +84,10 @@ class CatererInformationsController < ApplicationController
       params.require(:caterer_information).permit(:business_name, :number, :address, :image, :about, :user_id, :type_of_event)
     end
 
-    # def is_caterer
-    #   current_user.is_caterer
-    # end
+    #if user is a caterer, but hasn't made a profile, this will redirect them to the register page...use find_by to return nil, instead of breaking
+    def has_profile
+      if current_user.is_caterer? && CatererInformation.find_by(user_id: current_user.id) == nil
+        redirect_to new_caterer_information_path, notice: "Must create a Profile first"
+      end
+    end
 end

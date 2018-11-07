@@ -25,6 +25,18 @@ class User < ApplicationRecord
   has_one :caterer_information
   ##### End Associations #####
 
+  ##### MODEL SCOPE FOR FULL NAME #########
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+  ###### END MODEL SCOPE #######
+
+  ##### MODEL SCOPE FOR CATERER NAME #########
+  def self.caterer_name(id)
+    CatererInformation.find_by(user_id: id).business_name
+  end
+  ###### END MODEL SCOPE #######
+
   ####### OmniAuth  ###########
   # Below was breaking the app, but I think its essential
   # @user = User.from_omniauth(request.env["omniauth.auth"])

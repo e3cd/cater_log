@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
     # end
 
     @message = @conversation.messages.new
+    @caterer_name = User.caterer_name(@conversation.caterer_id)
   end
 
   def create

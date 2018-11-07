@@ -6,6 +6,7 @@ class HistoriesController < ApplicationController
 
   #Show all histories for the unique user
   def index
+    @no_history = History.no_history(current_user.id)
     @date = Date.today
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
