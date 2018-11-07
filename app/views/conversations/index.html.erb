@@ -19,5 +19,10 @@
         <% end %>
       <% end %>
     <% end %>
+    <div>
+    <% if @no_conversations && !current_user.is_caterer? %>
+      <p>No conversations to show, but you can start one <%= link_to 'here', event_types_path %></p>
+    <% end %>
+    </div>
   </div>
 </div>
