@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
 
   
   def show
+    @caterer_name = History.find(@review.history_id).caterer_name
   end
 
 
