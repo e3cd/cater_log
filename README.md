@@ -1,4 +1,4 @@
-# Ruby on Rails two-sided marketplace
+# CaterLog: A two-sided marketplace
 
 ### Collaborators
 
@@ -8,31 +8,24 @@ Things you may want to cover:
 
 ### [Github Repository]
 
-## Introduction
+## About
 
-### Problem definition / purpose
+CaterLog is a two-sided marketplace built with Ruby on Rails.
 
-### Functionality / features
+### Features
 
-### Screenshots
+### Installation
 
 ### Tech stack (e.g. html, css, deployment platform, etc)
 
-### Instructions on how to setup, configure and use your App.
+### Design Process
 
-## Design Process
-
-### Design process
 
 ### User stories
 
 ### A workflow diagram of the user journey
 
-### Tech stack 
-
-### Instructions on how to setup, configure and use your App.
-
-## Planning Process
+### Planning Process
 
 ### Project plan & timeline
 
