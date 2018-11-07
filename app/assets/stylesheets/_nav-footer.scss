@@ -45,33 +45,3 @@ footer {
   width: 30px;
   // filter: brightness(0) invert(1);
 }
-
-
-// Responsive Navbar
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 600px) {
-  // .navbar {
-  //   width: 600px;
-  // }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-  // .navbar {
-  //   width: 786px;
-  // }
-} 
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
-  // .navbar {
-  //   width: 992px;
-  // }
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (max-width: 1200px) {
-  // .navbar {
-  //   width: 1200px;
-  // }
-}

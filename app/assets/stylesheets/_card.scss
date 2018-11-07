@@ -51,43 +51,44 @@
   justify-content: center;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .card {
-    width: 100px;
-    height: 150px;
+/* Medium devices (landscape tablets, less than 768px) */
+@media only screen and (max-width: 768px) {
+  #card-us {
+    height: 50rem;
+    width: 40rem;
+    margin: 0 !important;
+  }
+} 
+
+/* Small devices (portrait tablets and large phones, less than 600px) */
+@media only screen and (max-width: 576px) {
+  #card-us {
+    height: 30rem;
+    width: 30rem;
+    margin: 0 !important;
+    justify-content: flex-start;
   }
 
   .card-us-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
     grid-gap: 10px;
-    text-align: center;
     height: 100px;
-    width: 100px;
-  }
-
-  h1 {
-    font-size: 1em !important;
+    width: 500px;
+    font-size: 0.8em;
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .example {background: green;}
-}
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .example {background: blue;}
-} 
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+
+
+
+
+/* Large devices (laptops/desktops, less than 992px) */
+@media only screen and (max-width: 992px) {
   .example {background: orange;}
 } 
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+/* Extra large devices (large laptops and desktops, less than 1200px) */
+@media only screen and (max-width: 1200px) {
   .example {background: pink;}
 }
