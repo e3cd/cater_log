@@ -51,6 +51,14 @@
   justify-content: center;
 }
 
+// Caterer Information Cards
+
+.card-information {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Medium devices (landscape tablets, less than 768px) */
 @media only screen and (max-width: 768px) {
   #card-us {
@@ -76,12 +84,6 @@
     font-size: 0.8em;
   }
 }
-
-
-
-
-
-
 
 /* Large devices (laptops/desktops, less than 992px) */
 @media only screen and (max-width: 992px) {

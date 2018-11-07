@@ -1,20 +1,27 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_caterer_menu_id, only: [:new, :create]
+  before_action :is_customer, only: [:new, :create, :confirm]
 
   #Show all histories for the unique user
   def index
+    @date = Date.today
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
-      @current_caterer_menus = CatererMenu.where(user_id: current_user.id)
       @histories = []
-      @current_caterer_menus.each do |menu|
+      #Loop through all the caterer menus to find which ones are in history
+      current_user.caterer_menus.each do |menu|
         @histories.push(History.where(caterer_menu_id: menu.id))
       end
+      #Little hack, as it saves an array
+      @histories = @histories[0]
     else
       #If current user is a customer, only show their history
       @histories = History.where(user_id: current_user.id)
     end
+    @histories = @histories.sort_by &:booking_date
+    @review = Review.all
   end
 
   # GET /histories/1
@@ -22,42 +29,26 @@ class HistoriesController < ApplicationController
   def show
   end
 
-  # GET /histories/new
   def new
     @history = History.new
-    @caterer_menu_id = params[:id]
-    @caterer_menu = CatererMenu.find(@caterer_menu_id)
-    @caterer_name = CatererInformation.find_by(user_id: @caterer_menu.user_id)[:business_name]
-    @menu = @caterer_menu[:description]
-    @cost = @caterer_menu[:price]
   end
 
   #Add new booking to database, then redirect to stripe payment
   def create
-    #Calculating the total_price of the booking
-    @caterer_menu_id = params[:history][:caterer_menu_id]
-    @caterer_menu = CatererMenu.find(@caterer_menu_id)
-    @cost = @caterer_menu[:price]
-    @total_price = @cost * (params[:history][:number_of_heads]).to_i #* 100 #times 100 as Stripe deals in cents
-
-    #Saving History to the database
+    @total_price = @cost * (params[:history][:number_of_heads]).to_f #* 100 #times 100 as Stripe deals in cents
     @history = History.new(history_params)
     @history.price = @total_price
     @history.user_id = current_user.id
+    @history.caterer_name = @caterer_name
     @history.save
-
-    respond_to do |format|
-      if @history.save
-        format.html { redirect_to confirm_booking_path, notice: 'Please confirm details.' }
-      else
-        ########### BUG!!! NEEDS ERROR MESSAGES!!!!!! ###############
-        format.html { redirect_to new_booking_path id: 4 }
-      end
+    if @history.save
+      redirect_to confirm_booking_path, notice: 'Please confirm details.'
+    else
+      render action: "new", assigns: {id: @caterer_menu_id}
     end
   end
 
-  # DELETE /histories/1
-  # DELETE /histories/1.json
+
   def destroy
     @history.destroy
     respond_to do |format|
@@ -66,6 +57,7 @@ class HistoriesController < ApplicationController
     end
   end
 
+  ######### STILL AN ISSUE WITH LAST HERE...HOPEFULLY BE ABLE TO SELECT THE PROPER ONE, SO THEN SOMEONE CAN COME BACK AND PAY ########
   def confirm
     @last = History.last
     @caterer = CatererMenu.find(@last[:caterer_menu_id])
@@ -74,14 +66,30 @@ class HistoriesController < ApplicationController
     @user = current_user
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_history
-      @history = History.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def history_params
-      params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :number)
+  private
+
+  def set_history
+    @history = History.find(params[:id])
+  end
+
+
+  def history_params
+    params.require(:history).permit(:first_name, :email, :booking_date, :number_of_heads, :caterer_menu_id, :caterer_name)
+  end
+
+  def set_caterer_menu_id
+    @caterer_menu_id ||= params[:id]
+    @caterer_menu_id ||= params[:history][:caterer_menu_id]
+    @caterer_menu = CatererMenu.find(@caterer_menu_id)
+    @caterer_name = CatererInformation.find_by(user_id: @caterer_menu.user_id)[:business_name]
+    @menu = @caterer_menu[:description]
+    @cost = @caterer_menu[:price]
+  end
+
+  def is_customer
+    if current_user.is_caterer?
+      redirect_to root_path, notice: "Caterers cannot make bookings"
     end
+  end
 end

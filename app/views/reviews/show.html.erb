@@ -1,8 +1,13 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <strong>Review for:</strong>
+  <%= @caterer_name %>
+</p>
 
 <p>
   <strong>Rating:</strong>
-  <%= @review.rating %>
+  <% @review.rating.times do %>
+    <%= octicon "star" %>
+  <% end %>
 </p>
 
 <p>
@@ -10,10 +15,5 @@
   <%= @review.content %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @review.user %>
-</p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%= link_to 'Back', histories_path %>

@@ -1,6 +1,7 @@
 // navbar
 .navbar {
   background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 .navbar-brand {
@@ -23,6 +24,12 @@
   &:hover {
     color: lightgray;
   }
+}
+
+// notice on navbar
+#notice {
+  color: white;
+  font-size: 55%;
 }
 
 // footer

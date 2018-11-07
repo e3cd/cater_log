@@ -19,9 +19,15 @@ Rails.application.routes.draw do
   get '/caterer_informations/:id/book', to: 'histories#new', as: 'new_booking'
   ###### END #######
 
+  ##### REVIEWS #######
+  get '/review/new', to: 'reviews#new', as: 'new_review'
+  post '/reviews', to: 'reviews#create'
+  get '/reviews/:id', to: 'reviews#show', as: 'review'
+  ##### END ######
+
   resources :caterer_menus
 
-  resources :reviews
+  
   resources :caterer_informations
   # get '/caterer/new', to: 'caterer_informations#new', as: 'new_caterer'
   # post '/caterer/new', to: 'caterer_informations#create'
@@ -40,10 +46,4 @@ Rails.application.routes.draw do
   get '/event_types/formal', to: 'event_types#formal'
   get '/event_types/cocktails', to: 'event_types#cocktail'
   get '/event_types/concerts', to: 'event_types#concert'
-  
-
-
-  
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -74,3 +74,5 @@ gem "faker", "~> 1.9"
 gem "stripe", "~> 3.29"
 
 gem "validates_timeliness", "~> 4.0"
+
+gem "octicons_helper", "~> 8.1"
