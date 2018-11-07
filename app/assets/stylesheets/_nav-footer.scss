@@ -1,6 +1,7 @@
 // navbar
 .navbar {
   background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
 
 .navbar-brand {
@@ -25,6 +26,12 @@
   }
 }
 
+// notice on navbar
+#notice {
+  color: white;
+  font-size: 55%;
+}
+
 // footer
 footer {
   padding-top: 50px;
@@ -46,7 +53,6 @@ footer {
   // filter: brightness(0) invert(1);
 }
 
-
 // Responsive Navbar
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 600px) {
@@ -60,14 +66,14 @@ footer {
   // .navbar {
   //   width: 786px;
   // }
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
   // .navbar {
   //   width: 992px;
   // }
-} 
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (max-width: 1200px) {

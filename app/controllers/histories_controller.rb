@@ -89,7 +89,7 @@ class HistoriesController < ApplicationController
 
   def is_customer
     if current_user.is_caterer?
-      redirect_to root_path, notice: "Caterers are not allowed to make bookings"
+      redirect_to root_path, notice: "Caterers cannot make bookings"
     end
   end
 end
