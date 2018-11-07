@@ -27,14 +27,12 @@ h1 {
   font-size: 250% !important;
 }
 
-
 // Features
 .section-2 {
   height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  // background-color: black;
+  justify-content: space-around;
 }
 
 .card-feature{
@@ -49,20 +47,10 @@ h2 {
   color: white;
 }
 
-.box-2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 // Why Us?
 .section-3 {
   height: 100vh;
-}
-
-.box-3 {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url("cater-food.jpg");
@@ -89,3 +77,50 @@ h5 {
   margin-bottom:20px;
   width: 100px;
 } 
+
+/* Medium devices (landscape tablets, less than 768px) */
+@media only screen and (max-width: 768px) {
+  .section-2 {
+    height: 240vh;
+  }
+
+  .section1-box1 {
+    margin-left: 50px;
+    top: 40%;
+    font-size: 2em;
+  }
+} 
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .section1-box1 {
+    margin-left: 40px;
+    top: 30%;
+    font-size: 2em;
+}
+  
+  .section-2 {
+    height: 240vh;
+  }
+
+  .section-3 {
+    height: 60vh;
+  }
+}
+
+/* Extra small devices (phones, 414px and down) */
+@media only screen and (max-width: 576px) {
+  .section1-box1 {
+    margin-left: 40px;
+    top: 30%;
+    font-size: 2em;
+}
+  
+  .section-2 {
+    height: 250vh;
+  }
+
+  .section-3 {
+    height: 60vh;
+  }
+}

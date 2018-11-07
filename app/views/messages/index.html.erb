@@ -1,42 +1,48 @@
 <div class="container message">
-  <div class="recipient">
-    <h1 class="text-center">Message <%= @conversation.caterer.email %>
+  <div class="recipient-name">
+  <% if current_user.is_caterer? %>
+    <h1 class="text-center">Message<%= @conversation.caterer.email %>
+  <% else %>
+    <h1 class="text-center">Message<%= @conversation.customer.email %>
+  <% end %>
   </div>
   <div class="container message-content">
     <div>
       <% @messages.each do |message| %>
         <% if message.content %>
         <%# find the user id %>
-          <% user = User.find(message.user_id) %>
-              <table>
-                <tr>
-                  <th>
-                    <%= user.email %> <%= message.message_time %>
-                  </th>
-                </tr>
-                <%# added styling in views to distinguish different users as could not embed ruby in scss %>
-                <% if current_user.id == message.user_id %>                
-                <td class="speech-bubble-1" style="background-color:#00aabb">
-                  <%= message.content %>
-                <% else %>
-                  <td class="speech-bubble-2" style="background-color:#c0c0c0">
-                  <%= message.content %>
-                  <% end %>
-                </td>
-                </tr>
-              </table>
+        <% user = User.find(message.user_id) %>
+          <table>
+            <tr class="table-font">
+              <th>
+                <%= user.email %> <%= message.message_time %>
+              </th>
+            </tr>
+            <tr>
+              <%# added styling in views to distinguish different users as could not embed ruby in scss %>
+              <% if current_user.id == message.user_id %>                
+                <td class="speech-bubble text-right" style="background-color:#00aabb">
+                <%= message.content %>
+              <% else %>
+                <td class="speech-bubble" style="background-color:#c0c0c0">
+                <%= message.content %>
+              </td>
+              <% end %>                  
+            </tr>
+          </table>
         <% end %>
       <% end %>
     </div>
 
-  <div>
-    <%= form_for [@conversation, @message] do |f| %>
-      <%= f.text_area :content %>
-      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-      <div>
-        <%= f.submit "Send Message"%>
-      </div>
-    <% end %>
-  </div>
+
+    <div>
+      <%= form_for [@conversation, @message] do |f| %>
+        <%= f.text_area :content %>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+        <div>
+          <%= f.submit "Send Message"%>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
