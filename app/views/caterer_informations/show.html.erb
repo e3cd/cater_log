@@ -1,58 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container card-event p-2">
+<div class="card-information">
+  <div class="card mb-5">
+    <img class="card-img-top" src=<%= @caterer_information.image_url %> alt="Caterer Image">
+    <div class="card-body">
+      <h5 class="card-title"><%= @caterer_information.business_name %></h5>
+      <p class="card-text"><%= @caterer_information.number %></p>
+      <p class="card-text"><%= @caterer_information.address %></p>
+      <p class="card-text"><%= @caterer_information.about %></p>
+      <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <% @caterer_menu.each do |menu| %>
+        <div>
+        <div class="card-header" >Package <%= @i %></div>
+          <p><%= menu.description %></p>
+          <h6>Price Per Head: $<%= number_with_precision(menu.price, :precision => 2) %></h6>
+          <% if current_user == nil %>
+            <%= link_to 'Book', new_booking_path(id: menu.id) %>
+          <% else %>
+          <% unless current_user.is_caterer? %>
+            <%= link_to 'Book', new_booking_path(id: menu.id) %> |
+            <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>    
+          <% end %>
+          <% if current_user.id == @menu.user_id %>
+            <%= link_to 'Edit Menu', edit_caterer_menu_path %>
+          <% end %>
+        <% end %> 
+        </div>
+        <% @i += 1 %>
+      <% end %>
+    </div>  
+  </div>
+</div>
+</div>
+</div>
 
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag @caterer_information.image_url %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= @caterer_information.business_name %>
-  </p>
-
-  <p>
-    <strong>Number:</strong>
-    <%= @caterer_information.number %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= @caterer_information.address %>
-  </p>
-
-  <p>
-    <strong>About:</strong>
-    <%= @caterer_information.about %>
-  </p>
-
-  <p>
-    <% @caterer_menu.each do |menu| %>
-      <div>
-        <h5>Package <%= @i %></h5>
-        <p><%= menu.description %></p>
-        <h6>Price Per Head</h6>
-        <p>$<%= number_with_precision(menu.price, :precision => 2) %></p>
-        <% if current_user == nil %>
-          <%= link_to  'Book', new_booking_path(id: menu.id) %>
-        <% else %>
-        <% unless current_user.is_caterer? %>
-          <%= link_to 'Book', new_booking_path(id: menu.id) %> |
-          <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>
-        <% end %>
-        <% if current_user.id == @menu.user_id %>
-          <%= link_to 'Edit Menu', edit_caterer_menu_path %>
-        <% end %>
-       <% end %> 
-      </div>
-      <% @i += 1 %>
-    <% end %>
-  </div>  
-</p>
+<div class="back-button">
+  <%= link_to 'Look For Caterers', event_types_path, class: "btn btn-outline-dark btn-sm back-button"%>
+  <%= link_to 'Home', root_path, class: "btn btn-outline-dark btn-sm back-button" %> 
+</div>
 
 
-<%= link_to 'Look For Caterers', event_types_path %> |
-<%= link_to 'Home', root_path %> 
+  
+
+
+
 
 

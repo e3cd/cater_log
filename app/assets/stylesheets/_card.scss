@@ -51,6 +51,14 @@
   justify-content: center;
 }
 
+// Caterer Information Cards
+
+.card-information {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .card {
@@ -74,20 +82,28 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .example {background: green;}
+  .example {
+    background: green;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .example {background: blue;}
-} 
+  .example {
+    background: blue;
+  }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .example {background: orange;}
-} 
+  .example {
+    background: orange;
+  }
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .example {background: pink;}
+  .example {
+    background: pink;
+  }
 }
