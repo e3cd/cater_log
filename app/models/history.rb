@@ -12,8 +12,7 @@ class History < ApplicationRecord
   validates :first_name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates_date :booking_date, :on_or_after => :today 
-  ## Not sure of wording for n.years... trying to stop them choosing a date 2 years in the future ##
-  validates_date :booking_date, :on_or_before => lambda { 2.years }
+  validates_date :booking_date, :on_or_before => lambda { 180.days.from_now }
   validates :number_of_heads, numericality: { only_integer: true, greater_than: 10, less_than: 200 }
   #### End Validations ####
 end
