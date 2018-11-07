@@ -1,3 +1,19 @@
-
+<div class="container card-event p-2">
+    <% placeholder.each do |placeholder| %>
+        <div class="card">
+            <img class="card-img-top" src=<%= placeholder.image_url %> alt="Card image cap">
+            <div class="card-body"> 
+                <h5 class="card-title"><%= placeholder.business_name %></h5>
+                <p class="card-text"><%= placeholder.address %></p>
+                <p class="card-text"><%= placeholder.about %></p>
+                <%= link_to 'More Information', caterer_information_path(placeholder.id), class: "btn btn-outline-dark btn-sm" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+    
+<div class="back-button">
+    <%= link_to 'Back', event_types_path, class: "btn btn-outline-dark btn-sm back-button" %>
+</div>
 
 

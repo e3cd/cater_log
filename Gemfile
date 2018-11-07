@@ -76,3 +76,5 @@ gem "stripe", "~> 3.29"
 gem "validates_timeliness", "~> 4.0"
 
 gem "octicons_helper", "~> 8.1"
+
+gem "mailgun-ruby", "~> 1.1"
