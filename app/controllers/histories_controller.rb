@@ -1,6 +1,6 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_history, only: [:show, :edit]
   before_action :set_caterer_menu_id, only: [:new, :create]
   before_action :is_caterer, only: [:new, :create, :confirm]
 
@@ -17,12 +17,14 @@ class HistoriesController < ApplicationController
         @histories.push(History.where(caterer_menu_id: menu.id))
       end
       #Little hack, as it saves an array
-      @histories = @histories[0]
+      @histories = @histories[0] if @histories != nil
     else
       #If current user is a customer, only show their history
       @histories = History.where(user_id: current_user.id)
     end
-    unless @histories == nil
+    if @histories == nil
+      @no_history = true
+    else
       @histories = @histories.sort_by &:booking_date
     end
     @review = Review.all
@@ -54,20 +56,10 @@ class HistoriesController < ApplicationController
     end
   end
 
-
-  def destroy
-    @history.destroy
-    respond_to do |format|
-      format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   def confirm
     @history = History.find(params[:id])
     @user = current_user
   end
-
 
   private
 
@@ -94,4 +86,4 @@ class HistoriesController < ApplicationController
       redirect_to root_path, notice: "Caterers cannot make bookings"
     end
   end
-end
+end 
