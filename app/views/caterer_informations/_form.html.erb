@@ -1,17 +1,4 @@
-
 <%= bootstrap_form_with(model: caterer_information, local: true) do |form| %>
-  <% if caterer_information.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(caterer_information.errors.count, "error") %> prohibited this caterer_information from being saved:</h2>
-
-      <ul>
-      <% caterer_information.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= form.text_field :business_name, placeholder: "eg. Bob's Burgers", autofocus: true %>
   </div>

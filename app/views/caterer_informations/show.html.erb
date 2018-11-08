@@ -6,25 +6,31 @@
       <p class="card-text"><%= @caterer_information.number %></p>
       <p class="card-text"><%= @caterer_information.address %></p>
       <p class="card-text"><%= @caterer_information.about %></p>
+      <% if current_user.id == @caterer_information.user_id %>
+        <p class="card-text"><%= link_to 'Edit Profile', edit_caterer_information_path, class: "btn btn-outline-dark btn-sm back-button" %></p>
+      <% end %>
       <div class="card bg-light mb-3" style="max-width: 18rem;">
       <% @caterer_menu.each do |menu| %>
         <div>
-        <div class="card-header" >Package <%= @i %></div>
+        <div class="card-header" ><h6>Package <%= @i %></h6></div>
           <p><%= menu.description %></p>
           <h6>Price Per Head: $<%= number_with_precision(menu.price, :precision => 2) %></h6>
           <% if current_user == nil %>
-            <%= link_to 'Book', new_booking_path(id: menu.id) %>
+            <%= link_to 'Book', new_booking_path(id: menu.id), class: "btn btn-outline-dark btn-sm back-button" %>
           <% else %>
           <% unless current_user.is_caterer? %>
-            <%= link_to 'Book', new_booking_path(id: menu.id) %> |
-            <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>    
+            <%= link_to 'Book', new_booking_path(id: menu.id), class: "btn btn-outline-dark btn-sm back-button" %> |
+            <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), class: "btn btn-outline-dark btn-sm back-button", method: :post %>    
           <% end %>
           <% if current_user.id == menu.user_id %>
-            <%= link_to 'Edit Menu', edit_caterer_menu_path %>
+            <%= link_to 'Edit Menu', edit_caterer_menu_path(menu.id), class: "btn btn-outline-dark btn-sm back-button" %>
           <% end %>
         <% end %> 
         </div>
         <% @i += 1 %>
+      <% end %>
+      <% if current_user.id == @caterer_information.user_id %>
+        <%= link_to 'New Menu', new_caterer_menu_path, class: "btn btn-outline-dark btn-sm back-button" %>
       <% end %>
     </div>  
   </div>
