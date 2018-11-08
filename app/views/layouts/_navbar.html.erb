@@ -34,7 +34,11 @@
           <% if current_user.is_caterer? %>
           <li class="nav-item">
             <div class="nav-link" >
-              <%= link_to "My Profile", (caterer_information_path(CatererInformation.find_by(user_id: current_user.id)) if CatererInformation.find_by(user_id: 3).present?), class: "link-to-text-color" %>
+            <% if CatererInformation.find_by(user_id: current_user.id) == nil %>
+              <%= link_to "My Profile", new_caterer_information_path, class: "link-to-text-color" %>
+            <% else %>
+              <%= link_to "My Profile", caterer_information_path(CatererInformation.find_by(user_id: current_user.id)), class: "link-to-text-color" %>
+            <% end %>
             </div>
           </li>
           <% end %>

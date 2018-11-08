@@ -1,63 +1,39 @@
 class CatererMenusController < ApplicationController
-  before_action :set_caterer_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_caterer_menu, only: [:edit, :update, :destroy]
 
-  # GET /caterer_menus
-  # GET /caterer_menus.json
-  def index
-    @caterer_menus = CatererMenu.all
-  end
-
-  # GET /caterer_menus/1
-  # GET /caterer_menus/1.json
-  def show
-  end
-
-  # GET /caterer_menus/new
   def new
     @caterer_menu = CatererMenu.new
   end
 
-  # GET /caterer_menus/1/edit
   def edit
   end
 
-  # POST /caterer_menus
-  # POST /caterer_menus.json
   def create
     @caterer_menu = CatererMenu.new(caterer_menu_params)
     @caterer_menu.user_id = current_user.id
-    # if @caterer_menu.save
-    #   redirect_to caterer_information_path(@caterer_menu.user_id)
-    # else
-    #   render :new
-    # end
-
     respond_to do |format|
       if @caterer_menu.save
-          format.html { redirect_to caterer_information_path(@caterer_menu.user_id)}
+        @caterer = CatererInformation.find_by(user_id: @caterer_menu.user_id)
+        format.html { redirect_to caterer_information_path(@caterer)}
       else
           format.html { render :new }
-          format.json { render json: @caterer_menu.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /caterer_menus/1
-  # PATCH/PUT /caterer_menus/1.json
   def update
     respond_to do |format|
       if @caterer_menu.update(caterer_menu_params)
-        format.html { redirect_to @caterer_menu, notice: 'Caterer menu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @caterer_menu }
+        @user_id = @caterer_menu.user_id
+        @caterer_information = CatererInformation.find_by(user_id: @user_id)
+        format.html { redirect_to caterer_information_path(@caterer_information), notice: 'Caterer menu was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @caterer_menu.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /caterer_menus/1
-  # DELETE /caterer_menus/1.json
+  ###### CAN'T DELETE AS ITS RELATED TO HISTORY ######
   def destroy
     @caterer_menu.destroy
     respond_to do |format|

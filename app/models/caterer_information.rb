@@ -12,10 +12,5 @@ class CatererInformation < ApplicationRecord
   validates :address, presence: true
   validates :about, presence: true
   validates :image, presence: true
-  
-
-  ###### Removed this, as we can set a basic avatar, and its up to the customer to set their own later ######
-  # validates :image, presence: true
-
 end
 

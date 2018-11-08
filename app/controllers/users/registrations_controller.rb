@@ -72,7 +72,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   store_location_for(:user, request.fullpath)
   # end
   # ############ End store location ##############
-  ######### END ############
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

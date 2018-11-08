@@ -23,7 +23,7 @@
       </thead>
       <tbody>
         <% @histories.each do |history| %>
-        <tr>
+          <tr>
             <td><%= history[:booking_date] %></td>
             <td class="table-link">
               <% if current_user.is_caterer %>
@@ -32,22 +32,28 @@
                 <%= link_to history[:caterer_name], history_path(id: history[:id]) %>
               <% end %>
             </td>
-            <td><%= history[:number_of_heads] %></td>
-            <td>$<%= number_with_precision(history[:price], :precision => 2) %></td>
-            <% if @review.find_by(history_id: history[:id]) %>
-              <td>
-                <% @review.find_by(history_id: history[:id])[:rating].times do %> 
-                  <%= link_to review_path(id: Review.find_by(history_id: history.id)) do%>
-                    <% octicon "star" %>
-                  <% end %>
-                <% end %>
-              </td>
-            <% elsif history[:booking_date] < @date %>
-              <td><%= link_to 'Add Review', new_review_path(:history_id => history[:id]) %></td>
+            <% if history[:has_paid] == false %>
+              <td>Have not completed Payment!</td>
+              <td>Click <%= link_to 'here', confirm_booking_path %> to pay</td>
+              <td>Record will delete in...</td>
             <% else %>
-              <td> Event has not Occured</td>
+              <td><%= history[:number_of_heads] %></td>
+              <td>$<%= number_with_precision(history[:price], :precision => 2) %></td>
+              <% if @review.find_by(history_id: history[:id]) %>
+                <td>
+                  <% @review.find_by(history_id: history[:id])[:rating].times do %> 
+                    <%= link_to review_path(id: Review.find_by(history_id: history.id)) do%>
+                      <% octicon "star" %>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% elsif history[:booking_date] < @date %>
+                <td><%= link_to 'Add Review', new_review_path(:history_id => history[:id]) %></td>
+              <% else %>
+                <td> Event has not Occured</td>
+              <% end %>
             <% end %>
-        </tr>
+          </tr>
         <% end %>
       </tbody>
     </table>
