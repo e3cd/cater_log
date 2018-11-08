@@ -7,7 +7,7 @@ histories = []
 conversations = []
 
 #n is however many records we want to make
-n = 50
+n = 100
 
 ######### USERS #############
 n.times do 
@@ -33,7 +33,7 @@ n.times do
             number: Faker::Number.number(10),
             address: Faker::Address.street_address,
             remote_image_url: Faker::Company.logo,
-            about: Faker::SiliconValley.quote,
+            about: Faker::FamousLastWords.last_words,
             type_of_event: rand(6).to_i
         )
     end
@@ -45,16 +45,6 @@ n.times do
     )
     caterer_menus.push(menu.id)
 end
-
-# ######### CATERER_MENU #############
-# caterer_informations.times do |info|
-#     menu = CatererMenu.create(
-#         description: Faker::Food.description,
-#         price: Faker::Number.decimal(2),
-#         user_id: info.id
-#     )
-#     caterer_menus.push(menu.id)
-# end
 
 ######### HISTORY #############
 n.times do

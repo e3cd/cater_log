@@ -6,7 +6,7 @@
       <p class="card-text"><%= @caterer_information.number %></p>
       <p class="card-text"><%= @caterer_information.address %></p>
       <p class="card-text"><%= @caterer_information.about %></p>
-      <% if current_user.id == @caterer_information.user_id %>
+      <% if current_user && current_user.id == @caterer_information.user_id %>
         <p class="card-text"><%= link_to 'Edit Profile', edit_caterer_information_path, class: "btn btn-outline-dark btn-sm back-button" %></p>
       <% end %>
       <div class="card bg-light mb-3" style="max-width: 18rem;">
@@ -29,7 +29,7 @@
         </div>
         <% @i += 1 %>
       <% end %>
-      <% if current_user.id == @caterer_information.user_id %>
+      <% if current_user && current_user.id == @caterer_information.user_id %>
         <%= link_to 'New Menu', new_caterer_menu_path, class: "btn btn-outline-dark btn-sm back-button" %>
       <% end %>
     </div>  
