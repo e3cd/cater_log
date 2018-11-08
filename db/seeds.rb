@@ -7,7 +7,7 @@ histories = []
 conversations = []
 
 #n is however many records we want to make
-n = 50
+n = 100
 
 ######### USERS #############
 n.times do 
@@ -33,7 +33,7 @@ n.times do
             number: Faker::Number.number(10),
             address: Faker::Address.street_address,
             remote_image_url: Faker::Company.logo,
-            about: Faker::SiliconValley.quote,
+            about: Faker::FamousLastWords.last_words,
             type_of_event: rand(6).to_i
         )
     end
