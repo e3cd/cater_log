@@ -25,12 +25,11 @@ Rails.application.routes.draw do
   get '/reviews/:id', to: 'reviews#show', as: 'review'
   ##### END ######
 
-  resources :caterer_menus
-
   
-  resources :caterer_informations
-  # get '/caterer/new', to: 'caterer_informations#new', as: 'new_caterer'
-  # post '/caterer/new', to: 'caterer_informations#create'
+  resources :caterer_informations, only: [:show, :new, :edit, :create, :update, :destroy]
+
+  resources :caterer_menus, only: [:new, :edit, :create, :update, :destroy]
+
   resources :conversations do
     resources :messages
   end
