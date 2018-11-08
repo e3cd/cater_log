@@ -1,2 +1,18 @@
 Yummo...Booking Confirmed!
 ==================================================
+Good day <%= @user.name %>,
+Want to know how I know its a good day, its because you just booked a date with one 
+of the talented caterers here at CaterLog!!
+
+Your date will be taking place on <%= @history.booking_date %>, and will be with <%= @history.caterer_name%>.
+
+You've booked for <%= @history.number_of_heads %>, and have successfully paid your
+bill, totalling $<%= @history.price %>0.
+
+We hope you have a lovely event!
+
+Don't forget to review <%= @history.caterer_name %> after the event!
+You can review at <%= @url %>
+
+
+Thanks for choosing CaterLog :)

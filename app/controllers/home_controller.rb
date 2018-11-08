@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
     def index
-        @caterer_information = CatererInformation.all
-        @caterer_information = @caterer_information.sample(3)
+        #Chooses 3 random entries from CatererInformation in an efficient manner
+        @caterer_information = CatererInformation.order('RANDOM()').limit(3)
     end
 end

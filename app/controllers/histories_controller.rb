@@ -32,6 +32,8 @@ class HistoriesController < ApplicationController
   # GET /histories/1.json
   def show
     @review = History.any_review(@history)
+    menu = CatererMenu.find(@history.caterer_menu_id)
+    @caterer = CatererInformation.find_by(user_id: menu.user_id)
   end
 
   def new

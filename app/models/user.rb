@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   ##### MODEL SCOPE FOR FULL NAME #########
   def name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name.capitalize!} #{self.last_name.capitalize!}"
   end
   ###### END MODEL SCOPE #######
 
