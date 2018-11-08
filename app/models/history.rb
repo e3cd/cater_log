@@ -7,8 +7,8 @@ class History < ApplicationRecord
   #### Validations #####
   validates :first_name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates_date :booking_date, :on_or_after => :today 
-  validates_date :booking_date, :on_or_before => lambda { 180.days.from_now }
+  validates_date :booking_date, :on_or_after => :today, message: "Date must be after today"
+  validates_date :booking_date, :on_or_before => lambda { 180.days.from_now }, message: "Date must be within 6 months"
   validates :number_of_heads, numericality: { only_integer: true, greater_than: 10, less_than: 200 }
   #### End Validations ####
 

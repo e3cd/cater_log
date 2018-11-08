@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages
     @message = @conversation.messages.new
     @caterer = User.find(Conversation.find(params[:conversation_id]).caterer_id)
-    
+    @profile = CatererInformation.find_by(user_id: @caterer.id)
   end
 
   def create

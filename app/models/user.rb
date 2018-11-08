@@ -2,6 +2,8 @@ class User < ApplicationRecord
   #### Validations - Email and password are covered by Devise #####
   validates :first_name, presence: true
   validates :last_name, presence: true
+  before_save :remove_whitespace
+  before_save :capitalize_data
   #### End Validations #####
 
   # Include default devise modules. Others available are:
@@ -25,9 +27,16 @@ class User < ApplicationRecord
   has_one :caterer_information
   ##### End Associations #####
 
+  ##### MODEL SCOPE FOR CAPITALIZE #########
+  def capitalize_data
+    self.first_name = self.first_name.downcase.titleize
+    self.last_name = self.last_name.downcase.titleize
+  end
+  ###### END MODEL SCOPE #######
+
   ##### MODEL SCOPE FOR FULL NAME #########
   def name
-    "#{self.first_name.capitalize!} #{self.last_name.capitalize!}"
+    "#{self.first_name} #{self.last_name}"
   end
   ###### END MODEL SCOPE #######
 
@@ -37,35 +46,14 @@ class User < ApplicationRecord
   end
   ###### END MODEL SCOPE #######
 
-  ####### OmniAuth  ###########
-  # Below was breaking the app, but I think its essential
-  # @user = User.from_omniauth(request.env["omniauth.auth"])
-
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
-    end
-  end
-  #### END OMNI #########
-
   ## ADD STRIPE ID TO USER WHEN SIGNED UP ###
-
   def add_customer_id
     if self.customer_id.nil?
-      customer = Stripe::Customer.create(
-    :email => self.email
-  )
-  self.customer_id = customer.id
-  self.save
+      customer = Stripe::Customer.create(:email => self.email)
+      self.customer_id = customer.id
+      self.save
+    end
   end
-end
-
-###### END STRIPE ######
+  ###### END STRIPE ######
 
 end

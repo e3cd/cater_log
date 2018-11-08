@@ -2,6 +2,7 @@ class CatererInformation < ApplicationRecord
   #Association to user_id and ability to upload image
   belongs_to :user
   mount_uploader :image, ImageUploader
+  before_save :remove_whitespace
 
   #Enums used for dropdown menu in rego form ... saved as enum in CatererInfo database
   enum type_of_event: [:Wedding, :Party, :Conference, :Formal, :Cocktail, :Concert]

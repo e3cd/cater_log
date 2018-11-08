@@ -24,6 +24,7 @@
           <% end %>
           <% if current_user.id == menu.user_id %>
             <%= link_to 'Edit Menu', edit_caterer_menu_path(menu.id), class: "btn btn-outline-dark btn-sm back-button" %>
+            <%= link_to 'Delete Menu', delete_caterer_menu_path(menu.id), data: {confirm: "Are you sure you want to delete this record?"}, class: "btn btn-outline-dark btn-sm back-button" %>
           <% end %>
         <% end %> 
         </div>

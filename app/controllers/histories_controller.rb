@@ -47,7 +47,6 @@ class HistoriesController < ApplicationController
     @history.price = @total_price
     @history.user_id = current_user.id
     @history.caterer_name = @caterer_name
-    # @history.save
     if @history.save
       redirect_to confirm_booking_path(@history.id), notice: 'Please confirm details.'
     else
@@ -64,7 +63,6 @@ class HistoriesController < ApplicationController
     end
   end
 
-  ######### STILL AN ISSUE WITH LAST HERE...HOPEFULLY BE ABLE TO SELECT THE PROPER ONE, SO THEN SOMEONE CAN COME BACK AND PAY ########
   def confirm
     @history = History.find(params[:id])
     @user = current_user
