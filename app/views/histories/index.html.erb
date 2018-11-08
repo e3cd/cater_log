@@ -26,13 +26,13 @@
           <tr>
             <td><%= history[:booking_date] %></td>
             <td class="table-link">
-              <% if current_user.is_caterer %>
-                <%= link_to history[:first_name], history_path(id: history[:id]), class: "btn btn-outline-dark btn-sm back-button" %>
+              <% if @is_caterer %>
+                <%= history[:first_name] %>
               <% else %>
                 <%= link_to history[:caterer_name], history_path(id: history[:id]), class: "btn btn-outline-dark btn-sm back-button" %>
               <% end %>
             </td>
-            <% if history[:has_paid] == false %>
+            <% if history[:has_paid] == false && !@is_caterer %>
               <td>Have not completed Payment!</td>
               <td>Click <%= link_to 'here', confirm_booking_path(history[:id]), class: "btn btn-outline-dark btn-sm back-button" %> to pay</td>
               <td>Record will delete in...</td>

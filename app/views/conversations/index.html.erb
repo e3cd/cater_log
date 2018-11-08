@@ -24,8 +24,10 @@
       <% end %>
     <% end %>
     <div>
-    <% if @no_conversations && !current_user.is_caterer? %>
+    <% if @no_conversations && !current_user.is_caterer %>
       <p>No conversations to show, but you can start one <%= link_to 'here', event_types_path %></p>
+    <% elsif @no_conversations && current_user.is_caterer %>
+      <p>No conversations to show, but don't worry, they will come soon</p>
     <% end %>
     </div>
   </div>
