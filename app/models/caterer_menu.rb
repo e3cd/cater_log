@@ -2,6 +2,7 @@ class CatererMenu < ApplicationRecord
   #Associations
   belongs_to :user
   before_save :is_deleted_false
+  before_save :remove_whitespace
 
   #Validations
   validates :description, presence: true

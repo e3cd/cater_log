@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :history
+  before_save :remove_whitespace
 
   validates :rating, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
   validates :content, presence: true, length: {maximum: 500}, on: :create, allow_nil: false
