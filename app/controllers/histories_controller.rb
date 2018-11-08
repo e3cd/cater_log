@@ -2,10 +2,11 @@ class HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_history, only: [:show, :edit, :update, :destroy]
   before_action :set_caterer_menu_id, only: [:new, :create]
-  before_action :is_customer, only: [:new, :create, :confirm]
+  before_action :is_caterer, only: [:new, :create, :confirm]
 
   #Show all histories for the unique user
   def index
+    @no_history = History.no_history(current_user.id)
     @date = Date.today
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
@@ -27,6 +28,7 @@ class HistoriesController < ApplicationController
   # GET /histories/1
   # GET /histories/1.json
   def show
+    @review = History.any_review(@history)
   end
 
   def new
@@ -87,7 +89,7 @@ class HistoriesController < ApplicationController
     @cost = @caterer_menu[:price]
   end
 
-  def is_customer
+  def is_caterer
     if current_user.is_caterer?
       redirect_to root_path, notice: "Caterers cannot make bookings"
     end

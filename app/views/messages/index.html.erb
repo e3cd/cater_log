@@ -1,10 +1,10 @@
 <div class="container message">
   <div class="recipient-name">
-    <% if current_user.is_caterer? %>
-      <h1 class="text-center"><%= @conversation.customer.email %>
-    <% else %>
-      <h1 class="text-center"><%= @conversation.caterer.email %>
-    <% end %>
+  <% if current_user.is_caterer? %>
+    <h1 class="text-center"><%= @conversation.customer.name %>
+  <% else %>
+    <h1 class="text-center"><%= @caterer_name %>
+  <% end %>
   </div>
   <div class="container message-content">
     <div>
@@ -15,7 +15,11 @@
           <table>
             <tr class="table-font">
               <th>
-                <%= user.email %> <%= message.message_time %>
+              <% if user.is_caterer %>
+                <%= @caterer_name %> <%= message.message_time %>
+              <% else %>
+                <%= user.name %> <%= message.message_time %>
+              <% end %>
               </th>
             </tr>
             <tr>

@@ -2,20 +2,4 @@
     <h1>Party</h1>
 </div>
 
-<div class="container card-event p-2">
-    <% @party.each do |party| %>
-        <div class="card">
-            <img class="card-img-top" src=<%= party.image_url %> alt="Card image cap">
-            <div class="card-body"> 
-                <h5 class="card-title"><%= party.business_name %></h5>
-                <p class="card-text"><%= party.address %></p>
-                <p class="card-text"><%= party.about %></p>
-                <%= link_to 'More Information', caterer_information_path(party.user_id), class: "btn btn-outline-dark btn-sm" %>
-            </div>
-        </div>
-    <% end %>
-</div>
-    
-<div class="back-button">
-    <%= link_to 'Back', event_types_path, class: "btn btn-outline-dark btn-sm back-button" %>
-</div>
+<%= render 'show', placeholder: @party %>
