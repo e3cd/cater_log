@@ -7,7 +7,7 @@ histories = []
 conversations = []
 
 #n is however many records we want to make
-n = 20
+n = 50
 
 ######### USERS #############
 n.times do 
@@ -26,15 +26,17 @@ end
 ######### CATERER_INFO and CATERER_MENU #############
 n.times do 
     random_caterer = caterer_users.sample
-    info = CatererInformation.create(
-        business_name: Faker::Company.name,
-        user_id: random_caterer,
-        number: Faker::Number.number(10),
-        address: Faker::Address.street_address,
-        remote_image_url: Faker::Company.logo,
-        about: Faker::SiliconValley.quote,
-        type_of_event: rand(6).to_i
-    )
+    if CatererInformation.find_by(user_id: random_caterer) == nil
+        info = CatererInformation.create(
+            business_name: Faker::Company.name,
+            user_id: random_caterer,
+            number: Faker::Number.number(10),
+            address: Faker::Address.street_address,
+            remote_image_url: Faker::Company.logo,
+            about: Faker::SiliconValley.quote,
+            type_of_event: rand(6).to_i
+        )
+    end
 
     menu = CatererMenu.create(
         description: Faker::Food.description,
@@ -43,6 +45,16 @@ n.times do
     )
     caterer_menus.push(menu.id)
 end
+
+# ######### CATERER_MENU #############
+# caterer_informations.times do |info|
+#     menu = CatererMenu.create(
+#         description: Faker::Food.description,
+#         price: Faker::Number.decimal(2),
+#         user_id: info.id
+#     )
+#     caterer_menus.push(menu.id)
+# end
 
 ######### HISTORY #############
 n.times do

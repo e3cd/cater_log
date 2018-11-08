@@ -15,10 +15,10 @@ class CatererInformationsController < ApplicationController
   # GET /caterer_informations/1.json
   def show
     #Where, so its an array, and each can be used
-    @caterer_menu = CatererMenu.where(user_id: params[:id])
-    @menu = CatererMenu.find_by(user_id: params[:id])
+    @caterer_menu = CatererMenu.where(user_id: @caterer_information.user_id)
     #i as an index, so it will change the package number
     @i = 1
+    # byebug()
   end
 
   # GET /caterer_informations/new
@@ -86,7 +86,7 @@ class CatererInformationsController < ApplicationController
 
     #if user is a caterer, but hasn't made a profile, this will redirect them to the register page...use find_by to return nil, instead of breaking
     def has_profile
-      if current_user.is_caterer? && CatererInformation.find_by(user_id: current_user.id) == nil
+      if current_user && current_user.is_caterer? && CatererInformation.find_by(user_id: current_user.id) == nil
         redirect_to new_caterer_information_path, notice: "Must create a Profile first"
       end
     end

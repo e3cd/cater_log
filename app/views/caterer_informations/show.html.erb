@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="card-information">
   <div class="card mb-5">
     <img class="card-img-top" src=<%= @caterer_information.image_url %> alt="Caterer Image">
@@ -21,7 +19,7 @@
             <%= link_to 'Book', new_booking_path(id: menu.id) %> |
             <%= link_to 'Enquire', conversations_path(customer_id: current_user.id, caterer_id: @caterer_information.user_id), method: :post %>    
           <% end %>
-          <% if current_user.id == @menu.user_id %>
+          <% if current_user.id == menu.user_id %>
             <%= link_to 'Edit Menu', edit_caterer_menu_path %>
           <% end %>
         <% end %> 
@@ -37,11 +35,3 @@
 <div class="back-button">
   <%= link_to 'Look For Caterers', event_types_path, class: "btn btn-outline-dark btn-sm back-button"%>
 </div>
-
-
-  
-
-
-
-
-
