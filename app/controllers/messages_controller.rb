@@ -3,19 +3,9 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-    
-    # if @messages.length > 10
-    #   @over_ten = true
-    #   @messages = @messages[-10..-1]
-    # end
-
-    # if params[:m]
-    #   @over_ten = false
-    #   @messages = @conversation.messages
-    # end
-
     @message = @conversation.messages.new
-    @caterer_name = User.caterer_name(@conversation.caterer_id)
+    @caterer = User.find(Conversation.find(params[:conversation_id]).caterer_id)
+    
   end
 
   def create
