@@ -3,8 +3,8 @@
         <div class="card-body"> 
             <h6 class="card-title">Confirm Booking</h6>
             <h4 class="card-text"><%= @caterer_name %></h4>
-            <p class="card-text">Date: <%= @last[:booking_date] %></p>
-            <p class="card-text">Number of People: <%= @last[:number_of_heads] %></p>
+            <p class="card-text">Date: <%= @last.booking_date %></p>
+            <p class="card-text">Number of People: <%= @last.number_of_heads %></p>
 
             <!-- Link to Stripe Payment -->
             <%= form_with url: payment_path do %>

@@ -1,19 +1,18 @@
-<p>
-  <strong>Review for:</strong>
-  <%= @caterer_name %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <% @review.rating.times do %>
-    <%= octicon "star" %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @review.content %>
-</p>
-
-
-<%= link_to 'Back', histories_path %>
+<div class="container card-event p-4 m-4">
+    <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">Review for</h6>
+          <h6 class="card-subtitle"><%= @caterer_name %></h6>
+          <div class="card-text pt-3">
+            <h6>Content</h6>
+          </div>
+          <h6 class="card-text text-muted"><%= @review.content %></h6>
+          <div class="card-text pt-3">
+            <% @review.rating.times do %>
+              <%= octicon "star" %>
+            <% end %>
+          </div>
+            <p class="pt-3"><%= link_to "Back", histories_path %></p>
+        </div>
+    </div>
+</div>

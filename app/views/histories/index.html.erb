@@ -1,6 +1,9 @@
 <div class="m-5">
   <% if @no_history %>
-    <p class="text-center">No Bookings to show. Why not create some <%= link_to 'here.', event_types_path %></p>
+    <p class="text-center">No Bookings to show :(
+      <% if !@is_caterer %> 
+        Why not create some <%= link_to 'here.', event_types_path %></p>
+      <% end %>
   <% else %>
     <table class="table table-striped">
       <thead>
@@ -24,7 +27,7 @@
             <td><%= history[:booking_date] %></td>
             <td class="table-link">
               <% if current_user.is_caterer %>
-                <%= link_to history[:first_name], history_path %>
+                <%= link_to history[:first_name], history_path(id: history[:id]) %>
               <% else %>
                 <%= link_to history[:caterer_name], history_path(id: history[:id]) %>
               <% end %>

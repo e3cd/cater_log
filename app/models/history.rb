@@ -17,7 +17,21 @@ class History < ApplicationRecord
   end
 
   def self.no_history(id)
-    self.find_by(user_id: id) == nil
+    ###### SEE IF YOU CAN GET THIS UP AND RUNNING, CHECKING TO SEE IF USER'S CATERER MENUS EXIST IN THE HISTORIES DATABASE ######
+
+    # if is_caterer
+    #   record = []
+    #   user_menus(id).each do |menu_id|
+    #     record.push(self.find_by(caterer_menu: menu_id))  
+    #   end
+    #   !record.any?
+    # else
+      self.find_by(user_id: id) == nil
+    # end
+  end
+
+  def self.user_menus(id)
+    User.find(id).caterer_menus.collect {|menu| menu.id }
   end
 
   def self.any_review(history)

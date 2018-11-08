@@ -6,7 +6,8 @@ class HistoriesController < ApplicationController
 
   #Show all histories for the unique user
   def index
-    @no_history = History.no_history(current_user.id)
+    @is_caterer = current_user.is_caterer
+    @no_history = History.no_history(current_user.id) if !@is_caterer
     @date = Date.today
     if current_user.is_caterer?
       #If current user is a caterer, only show history with their id
@@ -21,7 +22,9 @@ class HistoriesController < ApplicationController
       #If current user is a customer, only show their history
       @histories = History.where(user_id: current_user.id)
     end
-    @histories = @histories.sort_by &:booking_date
+    unless @histories == nil
+      @histories = @histories.sort_by &:booking_date
+    end
     @review = Review.all
   end
 
