@@ -46,16 +46,6 @@ n.times do
     caterer_menus.push(menu.id)
 end
 
-# ######### CATERER_MENU #############
-# caterer_informations.times do |info|
-#     menu = CatererMenu.create(
-#         description: Faker::Food.description,
-#         price: Faker::Number.decimal(2),
-#         user_id: info.id
-#     )
-#     caterer_menus.push(menu.id)
-# end
-
 ######### HISTORY #############
 n.times do
     random_menu = caterer_menus.sample
