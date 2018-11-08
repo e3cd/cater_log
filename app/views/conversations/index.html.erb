@@ -12,7 +12,11 @@
           <div>
             <div>
               <div class="conversation-email">
-                <%= link_to caterer.email, conversation_messages_path(conversation), class: "link-to-convo-email" %>
+              <% if current_user.is_caterer %>
+                <%= link_to caterer.name, conversation_messages_path(conversation), class: "link-to-convo-email" %> 
+              <% else %>
+                <%= link_to caterer.name, conversation_messages_path(conversation), class: "link-to-convo-email" %>
+              <% end %>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 <div class="container message">
   <div class="recipient-name">
-  <% if current_user.is_caterer? %>
-    <h1 class="text-center"><%= @conversation.customer.name %>
+  <% if current_user.is_caterer %>
+    <h1 class="text-center"><%= @conversation.customer.name %></h1>
   <% else %>
-    <h1 class="text-center"><%= @caterer_name %>
+    <h1 class="text-center"><%= @caterer.name %></h1>
   <% end %>
   </div>
   <div class="container message-content">
@@ -43,7 +43,7 @@
       <%= bootstrap_form_with(model: [@conversation, @message], local: true) do |form| %>
         <div class="field">
           <%= form.text_area :content %>
-          <%= form.text_field :user_id, value: current_user.id, type: "hidden" %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
         </div>
         <div class="actions">
           <%= form.submit "Send Message"%>
