@@ -32,12 +32,10 @@
     <!-- passing caterer_menu.id through -->
     <%= form.hidden_field :caterer_menu_id, value: @caterer_menu_id  %>
 
-    <div class="actions col-2 mx-auto">
+    <div class="actions text-center mx-auto">
       <%= form.submit "Make Booking" %>
+      <%= link_to 'History', histories_path, class: "btn btn-outline-dark btn-sm back-button"  %>
     </div>
-    
   <% end %>
-  <div class="text-center actions col-3 mx-auto pt-3">
-    <p><%= link_to 'History', histories_path, class: "btn btn-outline-dark btn-sm back-button"  %></p>
-  </div>
+
 </div>

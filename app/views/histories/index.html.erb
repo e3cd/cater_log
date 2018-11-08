@@ -27,14 +27,14 @@
             <td><%= history[:booking_date] %></td>
             <td class="table-link">
               <% if current_user.is_caterer %>
-                <%= link_to history[:first_name], history_path(id: history[:id]) %>
+                <%= link_to history[:first_name], history_path(id: history[:id]), class: "btn btn-outline-dark btn-sm back-button" %>
               <% else %>
-                <%= link_to history[:caterer_name], history_path(id: history[:id]) %>
+                <%= link_to history[:caterer_name], history_path(id: history[:id]), class: "btn btn-outline-dark btn-sm back-button" %>
               <% end %>
             </td>
             <% if history[:has_paid] == false %>
               <td>Have not completed Payment!</td>
-              <td>Click <%= link_to 'here', confirm_booking_path(history[:id]) %> to pay</td>
+              <td>Click <%= link_to 'here', confirm_booking_path(history[:id]), class: "btn btn-outline-dark btn-sm back-button" %> to pay</td>
               <td>Record will delete in...</td>
             <% else %>
               <td><%= history[:number_of_heads] %></td>
@@ -48,7 +48,7 @@
                   <% end %>
                 </td>
               <% elsif history[:booking_date] < @date %>
-                <td><%= link_to 'Add Review', new_review_path(:history_id => history[:id]) %></td>
+                <td><%= link_to 'Add Review', new_review_path(:history_id => history[:id]), class: "btn btn-outline-dark btn-sm back-button" %></td>
               <% else %>
                 <td> Event has not Occured</td>
               <% end %>

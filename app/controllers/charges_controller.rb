@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
       @history.stripe_charge_id = charge.id
       @history.has_paid = true
       if @history.save
-        UserMailer.with(user: current_user).booking_successful.deliver_later
+        UserMailer.with(user: current_user, history: @history).booking_successful.deliver_later
         flash[:notice] = "Thanks #{current_user.first_name}! Your booking is complete!"
         redirect_to histories_path
       end

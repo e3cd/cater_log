@@ -1,2 +1,18 @@
 <h1>Yummo...Booking Confirmed!</h1>
-<p><%= @user.name %>
+<br>
+<p>Good day <%= @user.name %>,</p>
+<p>Want to know how I know its a good day, its because you just booked a date with one </p>
+<p>of the talented caterers here at CaterLog!!</p>
+<br>
+<p>Your date will be taking place on <%= @history.booking_date %>, and will be with <h4><%= @history.caterer_name%></h4>.</p>
+<br>
+<p>You've booked for <%= @history.number_of_heads %>, and have successfully paid your bill, totalling $<%= @history.price %>0.
+<br>
+<p>We hope you have a lovely event!</p>
+<br>
+<p>Don't forget to review <%= @history.caterer_name %> after the event!</p>
+<p>You can review at <%= @url %>
+<br>
+<br>
+<br>
+<h2>Thanks for choosing CaterLog :)</h2>
