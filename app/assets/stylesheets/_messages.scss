@@ -13,7 +13,7 @@
 
 .message {
   height: 90vh;
-  width: 510px !important;
+  width: 700px !important;
 }
 
 .message-content {
@@ -30,13 +30,14 @@
 
 .recipient-name {
   position: relative;
-  background: black;
+  background: darkgray;
   color: white;
   margin-top: 10px;
   @include emboss;
 }
 
 .speech-bubble {
+  padding-right: 10px;
   @include emboss;
 }
 

@@ -1,5 +1,5 @@
 <div class="container conversation">
-  <div>
+  <div class="container text-center conversation-box">
     <h3>My Conversations</h3>
     <% @conversations.each do |conversation| %>
       <% if conversation.customer_id == current_user.id || conversation.caterer_id == current_user.id %>

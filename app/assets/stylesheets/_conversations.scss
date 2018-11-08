@@ -4,6 +4,14 @@
 
 .conversation {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.conversation-box {
+  width: 300px !important;
+  height: 700px;
 }
 
 .conversation-email {
