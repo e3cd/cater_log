@@ -2,12 +2,11 @@
     <div class="card">
         <div class="card-body"> 
             <h6 class="card-title">Confirm Booking</h6>
-            <h4 class="card-text"><%= @caterer_name %></h4>
-            <p class="card-text">Date: <%= @last.booking_date %></p>
-            <p class="card-text">Number of People: <%= @last.number_of_heads %></p>
-
+            <h4 class="card-text"><%= @history[:caterer_name] %></h4>
+            <p class="card-text">Date: <%= @history[:booking_date] %></p>
+            <p class="card-text">Number of People: <%= @history[:number_of_heads] %></p>
             <!-- Link to Stripe Payment -->
-            <%= form_with url: payment_path do %>
+            <%= form_with url: payment_path(id: @history.id) do %>
                 <article>
                     <% if flash[:error].present? %>
                         <div id="error_explanation">
@@ -17,11 +16,11 @@
                 </article>
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="<%= Rails.application.credentials.stripe[:publishable] %>"
-                    data-description="<%= @caterer_name %>"
-                    data-amount="<%= @total_price * 100 %>"
+                    data-description="<%= @history[:caterer_name] %>"
+                    data-amount="<%= @history[:price] * 100 %>"
                     data-locale="auto"
-                    data-email="<%= @user.email %>"
-                    data-label="$<%= @total_price %>">
+                    data-email="<%= current_user.email %>"
+                    data-label="$<%= number_with_precision(@history[:price], :precision => 2) %>">
                 </script>
             <% end %>
         </div>

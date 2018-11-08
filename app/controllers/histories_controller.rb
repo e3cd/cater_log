@@ -45,9 +45,9 @@ class HistoriesController < ApplicationController
     @history.price = @total_price
     @history.user_id = current_user.id
     @history.caterer_name = @caterer_name
-    @history.save
+    # @history.save
     if @history.save
-      redirect_to confirm_booking_path, notice: 'Please confirm details.'
+      redirect_to confirm_booking_path(@history.id), notice: 'Please confirm details.'
     else
       render action: "new", assigns: {id: @caterer_menu_id}
     end
@@ -64,11 +64,7 @@ class HistoriesController < ApplicationController
 
   ######### STILL AN ISSUE WITH LAST HERE...HOPEFULLY BE ABLE TO SELECT THE PROPER ONE, SO THEN SOMEONE CAN COME BACK AND PAY ########
   def confirm
-    # @unpaid = History
-    @last = History.last
-    @caterer = CatererMenu.find(@last[:caterer_menu_id])
-    @caterer_name = CatererInformation.find_by(user_id: @caterer.user_id)[:business_name]
-    @total_price = @last[:price]
+    @history = History.find(params[:id])
     @user = current_user
   end
 
