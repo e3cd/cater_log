@@ -34,7 +34,7 @@
             </td>
             <% if history[:has_paid] == false %>
               <td>Have not completed Payment!</td>
-              <td>Click <%= link_to 'here', confirm_booking_path %> to pay</td>
+              <td>Click <%= link_to 'here', confirm_booking_path(history[:id]) %> to pay</td>
               <td>Record will delete in...</td>
             <% else %>
               <td><%= history[:number_of_heads] %></td>
