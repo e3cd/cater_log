@@ -7,7 +7,7 @@ histories = []
 conversations = []
 
 #n is however many records we want to make
-n = 100
+n = 200
 
 ######### USERS #############
 n.times do 

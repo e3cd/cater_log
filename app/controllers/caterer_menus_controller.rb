@@ -35,10 +35,12 @@ class CatererMenusController < ApplicationController
 
   ###### CAN'T DELETE AS ITS RELATED TO HISTORY ######
   def destroy
-    @caterer_menu.destroy
-    respond_to do |format|
-      format.html { redirect_to caterer_menus_url, notice: 'Caterer menu was successfully destroyed.' }
-      format.json { head :no_content }
+    @caterer_menu.is_deleted = true
+    @caterer = CatererInformation.find_by(user_id: @caterer_menu.user_id)
+    if @caterer_menu.save
+      redirect_to caterer_information_path(@caterer.id), notice: 'Caterer menu was successfully deleted.'
+    else
+      render delete_menu_path(@caterer_menu.id), notice: 'Unable to delete caterer menu.' 
     end
   end
 

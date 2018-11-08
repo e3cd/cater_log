@@ -16,7 +16,7 @@
             <tr class="table-font">
               <th>
               <% if user.is_caterer %>
-                <%= @caterer_name %> <%= message.message_time %>
+                <%= @caterer.name %> <%= message.message_time %>
               <% else %>
                 <%= user.name %> <%= message.message_time %>
               <% end %>
@@ -47,6 +47,7 @@
         </div>
         <div class="actions">
           <%= form.submit "Send Message"%>
+          <%= link_to "Visit Profile", caterer_information_path(@profile.id), class: "btn btn-outline-dark btn-sm back-button" %>
         </div>
       <% end %>
     </div>

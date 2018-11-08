@@ -28,9 +28,12 @@ Rails.application.routes.draw do
   post '/process_payment', to: 'charges#process_payment', as: 'payment'
   resources :histories, only: [:index, :show, :create]
   ###### END ######
-  resources :caterer_informations, only: [:show, :new, :edit, :create, :update, :destroy]
-  resources :caterer_menus, only: [:new, :edit, :create, :update, :destroy]
-  resources :conversations do
-    resources :messages
+  ##### CATERER MENUS ######
+  resources :caterer_menus, only: [:new, :edit, :create, :update]
+  get '/caterer_menu/delete/:id', to: 'caterer_menus#destroy', as: 'delete_caterer_menu'
+  ###### END ######
+  resources :caterer_informations, only: [:show, :new, :edit, :create, :update]
+  resources :conversations, only: [:index, :show, :new, :create] do
+    resources :messages, only: [:index, :show, :new, :create]
   end
 end

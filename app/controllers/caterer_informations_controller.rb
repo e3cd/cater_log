@@ -5,7 +5,7 @@ class CatererInformationsController < ApplicationController
 
   def show
     #Where, so its an array, and each can be used
-    @caterer_menu = CatererMenu.where(user_id: @caterer_information.user_id)
+    @caterer_menu = CatererMenu.current_records.where(user_id: @caterer_information.user_id)
     #i as an index, so it will change the package number
     @i = 1
   end
